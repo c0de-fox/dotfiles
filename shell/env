@@ -1,0 +1,10 @@
+# Skip all this for non-interactive shells  
+[[ -z "$PS1" ]] && return  
+  
+# Force en_US UTF-8 environment  
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8  
+export LANGUAGE=en_US.UTF-8
+
+# Paths
+export PATH=$PATH:${HOME}/bin:/usr/lib/wine/bin:/sbin:/usr/sbin:/usr/local/bin
