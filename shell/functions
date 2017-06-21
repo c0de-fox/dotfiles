@@ -1,4 +1,5 @@
 # Functions gathered from around the internet
+# Takes 1st argument and attempts to extract them in the current directory
 extract () { # Extracts most common compressed files
         if [ -f $1 ] ; then
                 case $1 in
@@ -11,61 +12,52 @@ extract () { # Extracts most common compressed files
                         *.tbz2)         tar xjf $1              ;;
                         *.tgz)          tar xzf $1              ;;
                         *.zip)          unzip $1                ;;
-                        *.Z)            uncompress $1   ;;      
+                        *.Z)            uncompress $1   ;;
                         *)                      echo "'$1' cannot be extracted via extract()" ;;
-                esac    
-        else    
+                esac
+        else
                 echo "'$1' is not a valid file"
-        fi      
-}       
+        fi
+}
+# Takes 1st argument and makes a .tar.gz archive
 maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+# Takes 1st argument and makes a .zip archive
 makezip() { zip -r "${1%%/}.zip" "$1" ; }
+# Generate password - 1st argument is the number of characters, defaults to 20
+gpass() {
+        local l=$1
+        [ "$l" == "" ] && l=20
+        tr -dc A-Za-z0-9-!@%^*_ < /dev/urandom | head -c ${l} | xargs
+}
+# Shows the current PS list for the signed in user - Not cygwin compatible
+myps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
+# Searches the process list (ps) for 1st argument
 psgrep() {
         if [ ! -z $1 ] ; then
                 echo "Grepping for processes matching $1..."
                 ps aux | grep $1 | grep -v grep
-        else    
+        else
                 echo "!! Need name to grep for"
-        fi      
-}       
-gpass() { # Generates passwords
-        local l=$1
-        [ "$l" == "" ] && l=20
-        tr -dc A-Za-z0-9-!@%^*_ < /dev/urandom | head -c ${l} | xargs
-}     
-
-#up() { # Usage: up <Number of directories>. Blank for up one dir.
-#       local d=""
-#       limit=$1
-#       for((i=1 ; i <= limit ; i++)); do
-#               d=$d/..
-#    done
-#       d=$(echo $d | sed 's/^\///')
-#       if [ -z "$d" ]; then
-#               d=..
-#       fi
-#       cd $d
-#}
-#dirsize - finds directory sizes and lists them for the current directory
+        fi
+}
+# dirsize - finds directory sizes and lists them for the current directory
 dirsize (){
         du -shx * .[a-zA-Z0-9_]* 2> /dev/null | \
         egrep '^ *[0-9.]*[MG]' | sort -n > /tmp/list
         egrep '^ *[0-9.]*M' /tmp/list
         egrep '^ *[0-9.]*G' /tmp/list
         rm -rf /tmp/list
-}       
-myps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
-ii() {  # Get current host related info.
-    echo -e "\nYou are logged on ${BRed}$HOST"
-    echo -e "\n${BRed}Additionnal information:$NC " ; uname -a
-    echo -e "\n${BRed}Users logged on:$NC " ; w -hs | cut -d " " -f1 | sort | uniq
-    echo -e "\n${BRed}Current date :$NC " ; date
-    echo -e "\n${BRed}Machine stats :$NC " ; uptime
-    echo -e "\n${BRed}Memory stats :$NC " ; free
-    echo -e "\n${BRed}Diskspace :$NC " ; mydf / $HOME
-    echo -e "\n${BRed}Local IP Address :$NC" ; my_ip
-    echo -e "\n${BRed}Open connections :$NC "; netstat -pan --inet;
-    echo
-}  
-
-
+}
+# Usage: up <Number of directories>. Blank for up one dir.
+up() {
+    local d=""
+    limit=$1
+    for ((i=1; i <= limit; i++)); do
+        d=$d/..
+    done
+    d=$(echo $d | sed 's/^\///')
+    if [ -z "$d" ]; then
+        d=..
+    fi
+    cd $d
+}
