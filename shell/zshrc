@@ -14,8 +14,8 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-# Say how long a command took, if it took more than 30 seconds
-export REPORTTIME=30
+# Say how long a command took, if it took more than 15 seconds
+export REPORTTIME=15
 
 # Prompts for confirmation after 'rm *' etc
 # Helps avoid mistakes like 'rm * o' when 'rm *.o' was intended
@@ -33,11 +33,31 @@ setopt NO_BG_NICE
 # Makes Alt-s insert a sudo at beginning of prompt
 function insert_sudo {
     if [[ $BUFFER != "sudo "* ]]; then
-        BUFFER="sudo $BUFFER"; CURSOR+=5
+        BUFFER="sudo $BUFFER"; CURSOR+=6
     fi
 }
 zle -N insert-sudo insert_sudo
 bindkey "^[s" insert-sudo
 
+# Oh-My-ZSH Options below this line
+
 # Theme for Oh-My-ZSH
-ZSH_THEME="ys"
+ZSH_THEME="darkblood"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# Load oh-my-zsh
+source $ZSH/oh-my-zsh.sh
