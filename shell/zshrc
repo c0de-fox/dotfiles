@@ -44,6 +44,9 @@ bindkey "^[s" insert-sudo
 # Define Oh-My-ZSH root
 ZSH=$HOME/.oh-my-zsh
 
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=$HOME/dotfiles/omz
+
 # Theme for Oh-My-ZSH
 ZSH_THEME="darkblood"
 
@@ -64,6 +67,3 @@ plugins=(git)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/dotfiles/omz
