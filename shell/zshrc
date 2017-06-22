@@ -61,3 +61,6 @@ plugins=(git)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=$HOME/dotfiles/omz
