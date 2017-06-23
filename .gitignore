@@ -1,2 +1,6 @@
 *.un~
 *~
+*.swp
+*.swo
+*.DS_STORE
+*desktop.ini

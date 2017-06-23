@@ -1,0 +1,10 @@
+Dotfiles!
+
+This is the primary branch.
+It includes changes that should be included in most, if not
+all of the different configurations that may result of different 
+system use. 
+
+For now, there is the master and macos
+The macos branch is mostly athestic changes and plugins chosen
+for my macbook. 
