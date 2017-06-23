@@ -38,15 +38,9 @@ ln -s ~/dotfiles/vimrc ~/.vimrc
 echo "Changing default shell to ZSH"
 chsh -s /usr/bin/zsh
 
-# Check for ~/bin and create it if it doesn't exist
-if [[ !-d ~/bin ]]; then
-    mkdir -p ~/bin
-fi
-
-# Check for secret ~/dotfiles/.bin and create it if it doesn't exist
-if [[ !-d ~/dotfiles/.bin ]]; then
-    mkdir -p ~/dotfiles/.bin
-fi
+# Make the install directories
+echo "Making install directories"
+mkdir -p ~/bin ~/dotfiles/.bin
 
 # Install wp-cli
 echo "Installing wp-cli"
