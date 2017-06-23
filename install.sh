@@ -37,6 +37,16 @@ ln -s ~/dotfiles/vimrc ~/.vimrc
 echo "Changing default shell to ZSH"
 chsh -s /usr/bin/zsh
 
+# Check for ~/bin and create it if it doesn't exist
+if [[ !-d ~/bin ]]; then
+    mkdir -p ~/bin
+fi
+
+# Check for secret ~/dotfiles/.bin and create it if it doesn't exist
+if [[ !-d ~/dotfiles/.bin ]]; then
+    mkdir -p ~/dotfiles/.bin
+fi
+
 echo "Install done."
 echo "Check tmux, vim, and your shell to verify everything is correct"
 echo "you may need to launch a new instance of your shell"
