@@ -1,3 +1,7 @@
+# Modified from https://github.com/robbyrussell/oh-my-zsh/blob/master/tools/check_for_upgrade.sh
+# Original Copyright: (c) 2009-2018 Robby Russell and contributors
+# Modified Copyright: (c) 2018 David Todd (c0de)
+# License: MIT
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
