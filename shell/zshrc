@@ -73,7 +73,8 @@ plugins=(git \
     per-directory-history \
     virtualenvwrapper \
     wp-cli \
-    nyan)
+    nyan \
+    catimg)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
