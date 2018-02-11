@@ -8,3 +8,8 @@ export LANGUAGE=en_US.UTF-8
 
 # Paths
 export PATH=$PATH:${HOME}/bin:/usr/lib/wine/bin:/sbin:/usr/sbin:/usr/local/bin
+
+# Automatically attach tmux session "C0DE" upon entering a shell
+if [[ -z "$TMUX" ]]; then
+    tmux attach -t C0DE || tmux new -s C0DE
+fi
