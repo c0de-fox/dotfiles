@@ -39,6 +39,12 @@ function insert_sudo {
 zle -N insert-sudo insert_sudo
 bindkey "^[s" insert-sudo
 
+# Check for updates...
+# Stolen and modified Oh-My-ZSH's update system
+if [ "$DISABLE_DOTFILES_AUTO_UPDATE" != "true" ]; then
+  env ZSH=$ZSH DOTFILES=$DOTFILES DISABLE_UPDATE_PROMPT=$DISABLE_UPDATE_PROMPT zsh -f $DOTFILES/check_for_upgrade.sh
+fi
+
 # Oh-My-ZSH Options below this line
 
 # Define Oh-My-ZSH root
@@ -64,6 +70,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git \
+    per-directory-history \
     virtualenvwrapper \
     wp-cli \
     nyan)

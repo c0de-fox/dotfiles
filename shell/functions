@@ -20,7 +20,7 @@ extract () { # Extracts most common compressed files
         fi
 }
 # Takes 1st argument and makes a .tar.gz archive
-maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+maketgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
 # Takes 1st argument and makes a .zip archive
 makezip() { zip -r "${1%%/}.zip" "$1" ; }
 # Generate password - 1st argument is the number of characters, defaults to 20
