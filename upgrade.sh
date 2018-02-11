@@ -35,4 +35,4 @@ then
 else
   printf "${RED}%s${NORMAL}\n" 'There was an error updating. Try again later?'
 fi
-back
+cd $OLDPWD
