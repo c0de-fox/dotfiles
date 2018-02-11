@@ -15,6 +15,9 @@ export _DOTFILES="${HOME}/dotfiles"
 # Allow automatic updates
 export DISABLE_DOTFILES_AUTO_UPDATE="FALSE"
 
+# Set "true" to update without asking first
+export DISABLE_DOTFILES_UPDATE_PROMPT="FALSE"
+
 # Update every 2 weeks (OMZ default)
 export UPDATE_DOTFILES_DAYS=13
 

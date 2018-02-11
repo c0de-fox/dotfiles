@@ -7,7 +7,8 @@ function _current_epoch() {
 }
 
 function _update_dotfiles_update() {
-  echo "LAST_EPOCH=$(_current_epoch)" >! ~/.dotfiles-update
+  echo "export LAST_EPOCH=$(_current_epoch)" > ${HOME}/.dotfiles-update
+  echo "touched ~/.dotfiles-update"
 }
 
 function _upgrade_dotfiles() {
@@ -23,19 +24,28 @@ if [[ -z "$epoch_target" ]]; then
   epoch_target=13
 fi
 
-# Cancel upgrade if the current user doesn't have write permissions for the
-# dotfiles directory.
-[[ -w "$_DOTFILES" ]] || echo "You can't write to $(dotfiles)"; return 1
+# Cancel upgrade if the current user doesn't have
+# write permissions for the dotfiles directory.
+if [[ -w "$_DOTFILES" ]]; then
+else
+  echo "You can't write to $(_dotfiles)!"
+  return 1
+fi
 
 # Cancel upgrade if git is unavailable on the system
-whence git >/dev/null || echo "git is not available"; return 2
+if [[ $(whence git >/dev/null) || false ]]; then
+else
+  echo "git is not available"
+  return 2
+fi
 
-if mkdir "$_DOTFILES/log/update.lock" 2>/dev/null; then
-  if [ -f ~/.dotfiles-update ]; then
-    . ~/.dotfiles-update
+if mkdir -p "$_DOTFILES/update.lock" 2>/dev/null; then
+  if [ -f ${HOME}/.dotfiles-update ]; then
+    . ${HOME}/.dotfiles-update
 
     if [[ -z "$LAST_EPOCH" ]]; then
-      _update_zsh_update && return 0;
+      echo "Missing \$LAST_EPOCH"
+      _update_dotfiles_update && return 0;
     fi
 
     epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
@@ -53,9 +63,10 @@ if mkdir "$_DOTFILES/log/update.lock" 2>/dev/null; then
       fi
     fi
   else
+    echo "Missing ~/.dotfiles-update"
     # create the zsh file
     _update_dotfiles_update
   fi
 
-  rmdir $_DOTFILES/log/update.lock
+  rmdir $_DOTFILES/update.lock
 fi
