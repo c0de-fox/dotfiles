@@ -6,13 +6,17 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8  
 export LANGUAGE=en_US.UTF-8
 
-export DOTFILES="${HOME}/dotfiles"
-
 # Paths
 export PATH=$PATH:${HOME}/bin:/usr/lib/wine/bin:/sbin:/usr/sbin:/usr/local/bin
 
+# Give the path to the dotfiles
+export _DOTFILES="${HOME}/dotfiles"
+
 # Allow automatic updates
 export DISABLE_DOTFILES_AUTO_UPDATE="FALSE"
+
+# Update every 2 weeks (OMZ default)
+export UPDATE_DOTFILES_DAYS=13
 
 # Automatically attach tmux session "C0DE" upon entering a shell
 if [[ -z "$TMUX" ]]; then

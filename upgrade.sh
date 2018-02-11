@@ -21,7 +21,7 @@ else
 fi
 
 printf "${BLUE}%s${NORMAL}\n" "Updating your dotfiles"
-cd "$DOTFILES"
+cd "$_DOTFILES"
 branch=$(git name-rev --name-only HEAD)
 if git pull --rebase --stat origin $branch
 then

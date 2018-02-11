@@ -11,25 +11,26 @@ function _update_dotfiles_update() {
 }
 
 function _upgrade_dotfiles() {
-  env DOTFILES=$DOTFILES sh $DOTFILES/upgrade.sh
+  env _DOTFILES=$_DOTFILES sh $_DOTFILES/upgrade.sh
   # update the zsh file
-  _update_zsh_update
+  _update_dotfiles_update
 }
 
-epoch_target=$UPDATE_ZSH_DAYS
+# Configure this in shell/env
+epoch_target=$UPDATE_DOTFILES_DAYS
 if [[ -z "$epoch_target" ]]; then
-  # Default to old behavior
+  # Default to every 2 weeks
   epoch_target=13
 fi
 
 # Cancel upgrade if the current user doesn't have write permissions for the
 # dotfiles directory.
-[[ -w "$DOTFILES" ]] || return 0
+[[ -w "$_DOTFILES" ]] || echo "You can't write to $(dotfiles)"; return 1
 
 # Cancel upgrade if git is unavailable on the system
-whence git >/dev/null || return 0
+whence git >/dev/null || echo "git is not available"; return 2
 
-if mkdir "$DOTFILES/log/update.lock" 2>/dev/null; then
+if mkdir "$_DOTFILES/log/update.lock" 2>/dev/null; then
   if [ -f ~/.dotfiles-update ]; then
     . ~/.dotfiles-update
 
@@ -56,5 +57,5 @@ if mkdir "$DOTFILES/log/update.lock" 2>/dev/null; then
     _update_dotfiles_update
   fi
 
-  rmdir $DOTFILES/log/update.lock
+  rmdir $_DOTFILES/log/update.lock
 fi
