@@ -9,8 +9,14 @@
 # git
 # php 5.3 or greater
 
+echo "Please ensure that the following packages are installed and available in your PATH before proceeding:"
+echo "tmux, vim, zsh, curl, git"
+
+read -p "Press enter to continue. " WAIT_FOR_INPUT
+
 # First things first, install oh-my-zsh
 echo "Installing Oh-My-ZSH"
+echo "When the install is done, type `exit` to continue installing dotfiles"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo "Overriding ~/.zshrc. A backup can be found at ~/.zshrc.backup"
