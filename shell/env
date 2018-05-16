@@ -21,7 +21,8 @@ export DISABLE_DOTFILES_UPDATE_PROMPT="FALSE"
 # Update every 2 weeks (OMZ default)
 export UPDATE_DOTFILES_DAYS=13
 
+# Disabled for now because I've found this fairly annoying on macos with iTerm2
 # Automatically attach tmux session "C0DE" upon entering a shell
-if [[ -z "$TMUX" ]]; then
-    tmux attach -t C0DE || tmux new -s C0DE
-fi
+# if [[ -z "$TMUX" ]]; then
+#     tmux attach -t C0DE || tmux new -s C0DE
+# fi
