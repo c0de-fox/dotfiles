@@ -1,7 +1,7 @@
 # Include our shared environment stuff
-source ~/dotfiles/env
-source ~/dotfiles/aliases
-source ~/dotfiles/functions
+source ~/dotfiles/shell/env
+source ~/dotfiles/shell/aliases
+source ~/dotfiles/shell/functions
 
 # Basic options
 export HISTCONTROL=ignoredups
