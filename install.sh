@@ -43,14 +43,14 @@ echo "Making install directories"
 mkdir -p ~/bin ~/dotfiles/.bin
 
 # Install wp-cli
-echo "Installing wp-cli"
-cd ~/dotfiles/.bin
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod a+x wp-cli.phar
-ln -s ~/dotfiles/.bin/wp-cli.phar ~/bin/wp
+# echo "Installing wp-cli"
+# cd ~/dotfiles/.bin
+# curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+# chmod a+x wp-cli.phar
+# ln -s ~/dotfiles/.bin/wp-cli.phar ~/bin/wp
 
 # Since $HOME/bin is in the PATH, this should work
-wp --info
+# wp --info
 
 echo "Install done."
 echo "Check tmux, vim, and your shell to verify everything is correct"

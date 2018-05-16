@@ -72,7 +72,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git \
     per-directory-history \
     virtualenvwrapper \
-    wp-cli \
     nyan \
     catimg)
 
