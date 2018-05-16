@@ -16,3 +16,5 @@ alias ipa='ip addr|grep inet'
 alias cls='clear;ls'
 alias rvi='sudo -E vim'
 
+# Use `shred` if it exists, or just `rm -P`
+type "$shred" > /dev/null || alias shred='rm -P'
