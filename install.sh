@@ -33,14 +33,14 @@ function symlink() {
             mv -v $dest $backup
         fi
     fi
-
+    echo "Linking $(basename $src)..."
     ln -sf $src $dest
 }
 
 echo "Please ensure that the following packages are installed and available in your PATH before proceeding:"
 echo "tmux, vim, zsh, curl, git"
 
-#read -p "Press enter to continue. " WAIT_FOR_INPUT
+read -p "Press enter to continue. " WAIT_FOR_INPUT
 
 if ! which git >>/dev/null ; then
   echo "Error: git is not installed"
@@ -63,32 +63,32 @@ echo "Installing Oh-My-ZSH"
 echo "When the install is done, type `exit` to continue installing dotfiles"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-echo "Creating Symlinks"
+echo "Creating Symlinks..."
 symlink $basedir/shell/zshrc $HOME/.zshrc
 symlink $basedir/shell/bashrc $HOME/.bashrc
 symlink $basedir/tmux.conf $HOME/.tmux.conf
 symlink $basedir/vimrc $HOME/.vimrc
 symlink $basedir/gitconfig $HOME/.gitconfig
 
-echo "Installing VIM Pathogen"
+echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
 curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-echo "Installing VIM Sensible"
+echo "Installing VIM Sensible..."
 cd $HOME/.vim/bundle
 git clone git://github.com/tpope/vim-sensible.git
 
-echo "Adding user bin"
+echo "Adding user bin..."
 mkdir -p $bindir $basedir/.bin
 for path in bin/* ; do
     symlink $basedir/$path $bindir/$(basename $path)
 done
 
-echo "Changing default shell to ZSH"
+echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
 
 if [ -e "$postinst" ]; then
-    echo "Running post install"
+    echo "Running post install..."
     source "$postinst"
 else
     echo "No post install script found. Optionally create one at $postinst"
