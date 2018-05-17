@@ -41,6 +41,9 @@ git clone git://github.com/tpope/vim-sensible.git
 echo "Installing VIM config"
 ln -s ~/dotfiles/vimrc ~/.vimrc
 
+echo "Installing (user) global git config"
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+
 echo "Changing default shell to ZSH"
 chsh -s /usr/bin/zsh
 
