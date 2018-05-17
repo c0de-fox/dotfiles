@@ -7,7 +7,7 @@
 repourl="git://github.com/alopexc0de/dotfiles.git"
 
 # Exit the script if any errors are encountered
-set -e
+#set -e
 
 basedir=$HOME/dotfiles
 bindir=$HOME/bin
