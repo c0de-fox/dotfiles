@@ -40,7 +40,7 @@ function symlink() {
 echo "Please ensure that the following packages are installed and available in your PATH before proceeding:"
 echo "tmux, vim, zsh, curl, git"
 
-read -p "Press enter to continue. " WAIT_FOR_INPUT
+#read -p "Press enter to continue. " WAIT_FOR_INPUT
 
 if ! which git >>/dev/null ; then
   echo "Error: git is not installed"
