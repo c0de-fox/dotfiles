@@ -21,8 +21,18 @@ export DISABLE_DOTFILES_UPDATE_PROMPT="FALSE"
 # Update every 2 weeks (OMZ default)
 export UPDATE_DOTFILES_DAYS=13
 
-# Disabled for now because I've found this fairly annoying on macos with iTerm2
-# Automatically attach tmux session "C0DE" upon entering a shell
-# if [[ -z "$TMUX" ]]; then
-#     tmux attach -t C0DE || tmux new -s C0DE
-# fi
+# Whether or not to automatically connect to a TMUX session when opening the shell
+export DISABLE_TMUXAC="TRUE"
+
+# If there is not an active tmux session, we probably want one
+# Otherwise, the shell will not open the session again (eg. opening tabs, new terminals)
+if $(tmux list-sessions >> /dev/null 2>&1); then
+    export TMUXATT="TRUE"
+else
+    export TMUXATT="FALSE"
+fi
+
+# Automatically attach tmux session "C0DE"
+if [[ -z "$TMUX" && "$TMUXATT" != "TRUE" && "$DISABLE_TMUXAC" != "FALSE" ]]; then
+    tmux attach -t C0DE || tmux new -s C0DE
+fi
