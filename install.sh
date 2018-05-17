@@ -54,7 +54,7 @@ if [ -x "$basedir/check_for_upgrade.sh" ]; then
 else
     echo "Cloning dotfiles to $basedir"
     rm -rf $basedir
-    git clone --quiet --depth=1 $repourl $basedir
+    git clone --depth=1 $repourl $basedir
 fi
 
 # Start installing config
