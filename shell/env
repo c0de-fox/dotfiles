@@ -22,7 +22,7 @@ export DISABLE_DOTFILES_UPDATE_PROMPT="FALSE"
 export UPDATE_DOTFILES_DAYS=13
 
 # Whether or not to automatically connect to a TMUX session when opening the shell
-export DISABLE_TMUXAC="TRUE"
+export ENABLE_TMUXAC="TRUE"
 
 # If there is not an active tmux session, we probably want one
 # Otherwise, the shell will not open the session again (eg. opening tabs, new terminals)
@@ -33,6 +33,6 @@ else
 fi
 
 # Automatically attach tmux session "C0DE"
-if [[ -z "$TMUX" && "$TMUXATT" != "TRUE" && "$DISABLE_TMUXAC" != "FALSE" ]]; then
+if [[ -z "$TMUX" && "$TMUXATT" != "TRUE" && "$ENABLE_TMUXAC" != "FALSE" ]]; then
     tmux attach -t C0DE || tmux new -s C0DE
 fi
