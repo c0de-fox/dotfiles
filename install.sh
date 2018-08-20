@@ -69,6 +69,7 @@ symlink $basedir/shell/bashrc $HOME/.bashrc
 symlink $basedir/tmux.conf $HOME/.tmux.conf
 symlink $basedir/vimrc $HOME/.vimrc
 symlink $basedir/gitconfig $HOME/.gitconfig
+symlink $basedir/Xresources $HOME/.Xresources
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
@@ -87,11 +88,19 @@ done
 echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
 
+# Install i3 config
+echo "Installing i3 configuration"
+mkdir -p $HOME/.config/i3
+mkdir -p $HOME/.i3
+symlink $basedir/i3/config $HOME/.config/i3/config
+symlink $basedir/i3/i3blocks.conf $HOME/.i3/i3blocks.conf
+symlink $basedir/i3/wallpaper.sh $Home/.i3/wallpaper.sh
+
 if [ -e "$postinst" ]; then
     echo "Running post install..."
     source "$postinst"
 else
-    echo "No post install script found. Optionally create one at $postinst"
+    echo "No post install script found. Optionally create one at $postinst and reinstall your dotfies"
 fi
 
 echo "Install done."
