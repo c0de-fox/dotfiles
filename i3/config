@@ -1,3 +1,9 @@
+# TODO: Make this only run once, even if the user reloads i3-config (mod-shift-r)
+# tray icons(DP-0 is the primary display device's name,use the command "xrandr" to see.)
+exec --no-startup-id xrandr --output DP-0 --primary
+# Put Apple Cinima Display on the right of DP-0
+exec --no-startup-id xrandr --output DVI-I-1 --right-of DP-0
+
 # Use the Super key as $mod, because Alt is used in tmux
 set $mod Mod4
 set $i3_path ~/.i3
@@ -15,7 +21,7 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # Window kill command
 bindsym $mod+Shift+q kill
@@ -170,7 +176,7 @@ for_window [urgent=latest] focus
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -224,8 +230,16 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id xcompmgr -c -f -n
+
+# Composition Manager (Transparency)
+#exec --no-startup-id xcompmgr -c -f -n
+exec --no-startup-id compton --config ~/.compton.conf
+
+# Network Keyboard/Mouse/Clipboard
 exec --no-startup-id synergy
+# Personal VPN (PIA-manager)
+exec --no-startup-id "/bin/sh /opt/pia/ruby/ruby.sh /opt/pia/pia_manager/run.rb"
+
 
 # Screenshots
 bindsym --release Print exec shoot  # "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
@@ -259,9 +273,6 @@ bar {
 #height 30
 }
 
-# tray icons(DVI-I-1 is the display device's name,use the command "xrandr" to see.)
-exec --no-startup-id xrandr --output DVI-I-1 --primary
-
 # Theme colors
 client.focused #e39866 #1e1e20 #e39866 #e39866 #e39866
 client.focused_inactive #e39866 #1e1e20 #e39866 #dc7f41 #dc7f41
@@ -273,7 +284,7 @@ client.background #1e1e20
 
 # Gaps
 gaps inner 10
-gaps outer -4
+gaps outer 4
 
 smart_gaps on
 
