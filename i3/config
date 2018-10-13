@@ -21,7 +21,7 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec --no-startup-id terminator 
 
 # Window kill command
 bindsym $mod+Shift+q kill
@@ -29,11 +29,41 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
 
+# Alternate program launcher
+bindsym $mod+z exec --no-startup-id morc_menu
+
 # Setup lockscreen
 bindsym $mod+p exec --no-startup-id i3lock-fancy -- scrot -z
 
 # Random wallpaper
 exec --no-startup-id $i3_path/wallpaper.sh&
+
+################################################################################################
+## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+################################################################################################
+
+exec --no-startup-id volumeicon
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+exec --no-startup-id pulseaudio
+exec --no-startup-id pa-applet
+bindsym $mod+Ctrl+m exec pavucontrol
+
+################################################################################################
+
+# Screen brightness controls
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Keybinds
+bindsym $mod+Ctrl+b exec --no-startup-id xfce4-terminal -e 'bmenu'
+bindsym $mod+F2 exec --no-startup-id firefox
+bindsym $mod+F3 exec --no-startup-id pcmanfm
+bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+bindsym Print exec --no-startup-id i3-scrot --select '%Y-%m-%d_$wx$h.png' # Selection -- CHange cursor?
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w '%Y-%m-%d_$wx$h.png' # Window
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -d '%Y-%m-%d_$wx$h.png' # Fullscreen
 
 # change focus
 bindsym $mod+j focus left
@@ -224,12 +254,17 @@ mode "resize" {
 
 # Autostart applications
 #exec --no-startup-id xfce4-panel --disable-wm-check
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id start_conky_mia
+
+# Timeout to activate screensaver/lockscreen
+exec --no-startup-id xautolock -time 30 -locker i3blur
 
 # Composition Manager (Transparency)
 #exec --no-startup-id xcompmgr -c -f -n
@@ -238,12 +273,7 @@ exec --no-startup-id compton --config ~/.compton.conf
 # Network Keyboard/Mouse/Clipboard
 exec --no-startup-id synergy
 # Personal VPN (PIA-manager)
-exec --no-startup-id "/bin/sh /opt/pia/ruby/ruby.sh /opt/pia/pia_manager/run.rb"
-
-
-# Screenshots
-bindsym --release Print exec shoot  # "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-#bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+#exec --no-startup-id "/bin/sh /opt/pia/ruby/ruby.sh /opt/pia/pia_manager/run.rb"
 
 #bar {
 #    status_command i3status
@@ -256,37 +286,47 @@ bar {
     position top
 #    mode hide
     workspace_buttons yes
-    tray_output primary
+    tray_output DP-0
     tray_padding 0
     separator_symbol "|"
 
     colors {
-    background #285477
-    statusline #dedede
-    separator #2d2d2d
-    focused_workspace #636e88 #285de7 #dedfdg
-    active_workspace #556677 #234567 #56ef67
-    inactive_workspace #636d72 #2d2d2d #dedede
-    urgent_workspace #ffffff #900000 #d23d32
-    }
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text                                                           
+        focused_workspace  #F9FAF9 #16a085 #292F34                                                    
+        active_workspace   #595B5B #353836 #FDF6E3                                                    
+        inactive_workspace #595B5B #222D31 #EEE8D5                                                    
+        binding_mode       #16a085 #2C2C2C #F9FAF9                                                    
+        urgent_workspace   #16a085 #FDF6E3 #E5201D                                                    
+    }             
     
 #height 30
 }
 
-# Theme colors
-client.focused #e39866 #1e1e20 #e39866 #e39866 #e39866
-client.focused_inactive #e39866 #1e1e20 #e39866 #dc7f41 #dc7f41
-client.unfocused #e39866 #1e1e20 #e39866 #dc7f41 #dc7f41
-client.urgent #e39866 #1e1e20 #e39866 #dc7f41 #dc7f41
-client.placeholder #e39866 #1e1e20 #e39866 #dc7f41 #dc7f41
+# Toggle visibility of status bar
+bindsym $mod+m bar mode toggle
 
-client.background #1e1e20
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+
 
 # Gaps
 gaps inner 10
 gaps outer 4
 
 smart_gaps on
+
+smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
