@@ -37,10 +37,7 @@ function symlink() {
     ln -sf $src $dest
 }
 
-echo "Please ensure that the following packages are installed and available in your PATH before proceeding:"
-echo "tmux, vim, zsh, curl, git"
-
-read -p "Press enter to continue. " WAIT_FOR_INPUT
+read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 
 if ! which git >>/dev/null ; then
   echo "Error: git is not installed"
@@ -95,6 +92,7 @@ mkdir -p $HOME/.i3
 symlink $basedir/i3/config $HOME/.config/i3/config
 symlink $basedir/i3/i3blocks.conf $HOME/.i3/i3blocks.conf
 symlink $basedir/i3/wallpaper.sh $Home/.i3/wallpaper.sh
+symlink $basedir/i3/compton.conf $HOME/.compton.conf
 
 if [ -e "$postinst" ]; then
     echo "Running post install..."
