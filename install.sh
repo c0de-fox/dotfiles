@@ -45,9 +45,9 @@ if ! which git >>/dev/null ; then
 fi
 
 # If the update script exists, try to do a normal update
-if [ -x "$basedir/check_for_upgrade.sh" ]; then
+if [ -x "$basedir/.bin/check_for_upgrade.sh" ]; then
     source "$basedir/shell/env"
-    env _DOTFILES=$basedir DISABLE_UPDATE_PROMPT='FALSE' zsh -f $basedir/check_for_upgrade.sh
+    env _DOTFILES=$basedir DISABLE_UPDATE_PROMPT='FALSE' zsh -f $basedir/.bin/check_for_upgrade.sh
 else
     echo "Cloning dotfiles to $basedir"
     rm -rf $basedir

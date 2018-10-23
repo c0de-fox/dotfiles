@@ -16,7 +16,7 @@ function _update_dotfiles_update() {
 }
 
 function _upgrade_dotfiles() {
-  env _DOTFILES=$_DOTFILES sh $_DOTFILES/upgrade.sh
+  env _DOTFILES=$_DOTFILES sh $_DOTFILES/.bin/upgrade.sh
   # update the zsh file
   _update_dotfiles_update
 }
