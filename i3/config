@@ -29,6 +29,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # Alternate program launcher
 bindsym $mod+z exec --no-startup-id morc_menu
