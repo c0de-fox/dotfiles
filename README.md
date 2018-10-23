@@ -7,6 +7,13 @@
 3. ????
 4. Profit
 
+## Distro auto-install
+This feature will install the basic dependencies automatically if you approve at the prompt, assumes that you have sudo access.
+
+Currently available for:
+- Arch/Manjaro Linux (pacman+yay)
+- Debian Linux (apt)
+
 ## Dotfiles Postinstall
 You may create a standard text file called `.dotfiles.postinst` in your home directory before installing.
 This file contains commands, one per line, that will be executed in order after the install script finishes.

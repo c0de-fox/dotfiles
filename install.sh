@@ -39,6 +39,22 @@ function symlink() {
 
 read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 
+echo "[Dotfiles] Would you like to detect distro and auto-install dependencies? [Y/n]: \c"
+read line
+if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
+    distrourl="https://raw.githubusercontent.com/alopexc0de/dotfiles/master/.bin"
+    if [ -f /etc/arch-release ]; then
+        bash <(curl -sL $distrourl/install.deb)
+    elif [ -f /etc/debian_version]; then
+        bash <(curl -sL $distrourl/install.arch)
+    else
+        echo "This system does not have an auto-install file. Please install the following packages manually"
+        echo "- tmux zsh vim git"
+        echo "- terminator rofi feh xcompmgr"
+        echo "- i3lock-fancy i3blocks"
+    fi
+fi
+
 if ! which git >>/dev/null ; then
   echo "Error: git is not installed"
   exit 1

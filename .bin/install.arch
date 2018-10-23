@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# This ensures that the entire script is downloaded before execution
+{
+
+pacman -Syu
+pacman -S yay
+
+yay -Syu 
+
+yay -S tmux zsh vim git\
+       terminator rofi feh xcompmgr\
+       i3lock-fancy i3blocks 
+
+}
