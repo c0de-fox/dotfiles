@@ -21,14 +21,13 @@ For example, you may want to add commands such as `git config --global user.name
 
 ## i3 information
 My dotfiles now include my personalized i3 configuration if you also run the i3wm.
-This config is loosly based off of [i3wm-themer](https://github.com/unix121/i3wm-themer) and may be required as a dependency.
 
 * [i3-gaps](https://github.com/Airblader/i3) WM
 * [i3blocks](https://github.com/vivien/i3blocks) i3bar scheduler
 * [i3lock-fancy](https://github.com/meskarune/i3lock-fancy) locker
 * [rofi](https://github.com/DaveDavenport/rofi) launcher
 * [Adobe's Source Code Pro](https://github.com/adobe-fonts/source-code-pro) font
-* [rxvt-unicode](https://wiki.archlinux.org/index.php/Rxvt-unicode) terminal
+* [terminator](https://wiki.archlinux.org/index.php/Terminator) terminal
 * [feh](https://feh.finalrewind.org/) Image viewer/wallpaper
 * [xcompmgr](https://wiki.archlinux.org/index.php/Xcompmgr) Compisiton Manager (window transparency)
 
