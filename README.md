@@ -3,7 +3,7 @@
 ## Installation
 
 1. Optionally create ~/.dotfiles.postinst
-2. `bash <(curl -sL http://lob.li/itt)` (https://raw.githubusercontent.com/alopexc0de/dotfiles/master/install.sh)
+2. `bash <(curl -sL https://lob.li/itt)` (https://raw.githubusercontent.com/alopexc0de/dotfiles/master/install.sh)
 3. ????
 4. Profit
 
