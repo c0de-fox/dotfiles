@@ -6,6 +6,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8  
 export LANGUAGE=en_US.UTF-8
 
+# Terminal Editor
+export EDITOR=vim
+
 # Paths
 export PATH=${HOME}/bin:$PATH:/usr/lib/wine/bin:/sbin:/usr/sbin:/usr/local/bin
 
