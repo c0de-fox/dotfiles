@@ -63,10 +63,10 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 echo "Creating Symlinks..."
 symlink $basedir/shell/zshrc $HOME/.zshrc
 symlink $basedir/shell/bashrc $HOME/.bashrc
-symlink $basedir/tmux.conf $HOME/.tmux.conf
-symlink $basedir/vimrc $HOME/.vimrc
-symlink $basedir/gitconfig $HOME/.gitconfig
-symlink $basedir/Xresources $HOME/.Xresources
+symlink $basedir/home/tmux.conf $HOME/.tmux.conf
+symlink $basedir/home/vimrc $HOME/.vimrc
+symlink $basedir/home/gitconfig $HOME/.gitconfig
+symlink $basedir/home/Xresources $HOME/.Xresources
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
