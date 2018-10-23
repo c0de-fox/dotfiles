@@ -54,8 +54,6 @@ if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
     fi
 fi
 
-exit
-
 if ! which git >>/dev/null ; then
   echo "Error: git is not installed"
   exit 1
