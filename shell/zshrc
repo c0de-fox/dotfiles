@@ -72,7 +72,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git \
     virtualenvwrapper \
     catimg \
-    fancy-ctrl-z)
+    fancy-ctrl-z \
+    emoji)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
