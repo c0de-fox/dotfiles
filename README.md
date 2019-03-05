@@ -37,6 +37,7 @@ My dotfiles now include my personalized i3 configuration if you also run the i3w
 * [terminator](https://wiki.archlinux.org/index.php/Terminator) terminal
 * [feh](https://feh.finalrewind.org/) Image viewer/wallpaper
 * [xcompmgr](https://wiki.archlinux.org/index.php/Xcompmgr) Compisiton Manager (window transparency)
+* [maim](https://github.com/naelstrof/maim) Screenshot utility
 
 ## Branch Info
 
