@@ -1,5 +1,3 @@
-
-executable file 21 lines (15 sloc) 559 Bytes
 #!/bin/sh
 
 # Status bar module for disk space
