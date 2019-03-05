@@ -66,7 +66,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+n --release exec --no-startup-id terminator -e nnn
 
 bindsym Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d-%s).png    #i3-scrot --select '%Y-%m-%d_$wx$h.png' # Selection -- CHange cursor?
-bindsym $mod+Insert --release exec --no-startup-id maim -i $(xdotool getactivewindow) ~/Pictures/$(date +%Y-%m-%d-%s).png  #i3-scrot -w '%Y-%m-%d_$wx$h.png' # Window
+bindsym $mod+Insert exec --no-startup-id  ~/.i3/screenshotter.sh  #i3-scrot -w '%Y-%m-%d_$wx$h.png' # Window
 bindsym $mod+Shift+Insert --release exec --no-startup-id maim ~/Pictures/$(date +%Y-%m-%d).png  #i3-scrot -d '%Y-%m-%d_$wx$h.png' # Fullscreen
 bindsym $mod+Ctrl+Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d).png&& pinta ~/Pictures/$(date +%Y-%m-%d-%s).png # screenshot and edit
 

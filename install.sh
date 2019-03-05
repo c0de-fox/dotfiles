@@ -107,7 +107,8 @@ mkdir -p $HOME/.config/i3
 mkdir -p $HOME/.i3
 symlink $basedir/i3/config $HOME/.config/i3/config
 symlink $basedir/i3/i3blocks.conf $HOME/.i3/i3blocks.conf
-symlink $basedir/i3/wallpaper.sh $Home/.i3/wallpaper.sh
+symlink $basedir/i3/wallpaper.sh $HOME/.i3/wallpaper.sh
+symlink $basedir/i3/screenshotter.sh $HOME/.i3/screenshotter.sh
 symlink $basedir/i3/compton.conf $HOME/.compton.conf
 
 if [ -e "$postinst" ]; then
