@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Simple screenshot uploader
+# The web server is nginx and configured with h5ai to be a file manager
+# Copyright (c) 2019 David Todd (c0de) c0de@c0defox.es
+
 DATE=$(date +%Y-%m-%d-%s).png
 FILENAME=~/Pictures/$DATE
 
