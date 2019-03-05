@@ -82,6 +82,7 @@ symlink $basedir/home/tmux.conf $HOME/.tmux.conf
 symlink $basedir/home/vimrc $HOME/.vimrc
 symlink $basedir/home/gitconfig $HOME/.gitconfig
 symlink $basedir/home/Xresources $HOME/.Xresources
+symlink $basedir/i3/i3blocks $HOME/bin/i3blocks
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
