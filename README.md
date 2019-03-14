@@ -26,7 +26,7 @@ For example, you may want to add commands such as `git config --global user.name
 4. Push to origin
 5. Install your new dotfiles everywhere
 
-## i3 information
+## Dependencies
 My dotfiles now include my personalized i3 configuration if you also run the i3wm.
 
 * [i3-gaps](https://github.com/Airblader/i3) WM
@@ -38,6 +38,7 @@ My dotfiles now include my personalized i3 configuration if you also run the i3w
 * [feh](https://feh.finalrewind.org/) Image viewer/wallpaper
 * [xcompmgr](https://wiki.archlinux.org/index.php/Xcompmgr) Compisiton Manager (window transparency)
 * [maim](https://github.com/naelstrof/maim) Screenshot utility
+* [powerline](https://wiki.archlinux.org/index.php/Powerline)
 
 ## Branch Info
 

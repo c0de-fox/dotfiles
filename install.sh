@@ -47,10 +47,7 @@ if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
     elif [ -f /etc/debian_version ]; then
         bash <(curl -sL $distrourl/install.deb)
     else
-        echo "This system does not have an auto-install file. Please install the following packages manually"
-        echo "- tmux zsh vim git"
-        echo "- terminator rofi feh xcompmgr"
-        echo "- i3lock-fancy i3blocks"
+        echo "This system does not have an auto-install file. Please install the dependencies manually"
     fi
 fi
 
@@ -82,7 +79,7 @@ symlink $basedir/home/tmux.conf $HOME/.tmux.conf
 symlink $basedir/home/vimrc $HOME/.vimrc
 symlink $basedir/home/gitconfig $HOME/.gitconfig
 symlink $basedir/home/Xresources $HOME/.Xresources
-symlink $basedir/i3/i3blocks $HOME/bin/i3blocks
+symlink $basedir/home/terminator $Home/.config/terminator
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
@@ -94,7 +91,7 @@ git clone git://github.com/tpope/vim-sensible.git
 
 echo "Adding user bin..."
 mkdir -p $bindir $basedir/.bin
-for path in bin/* ; do
+for path in $basedir/bin/*; do
     symlink $basedir/$path $bindir/$(basename $path)
 done
 
@@ -110,6 +107,7 @@ symlink $basedir/i3/i3blocks.conf $HOME/.i3/i3blocks.conf
 symlink $basedir/i3/wallpaper.sh $HOME/.i3/wallpaper.sh
 symlink $basedir/i3/screenshotter.sh $HOME/.i3/screenshotter.sh
 symlink $basedir/i3/compton.conf $HOME/.compton.conf
+symlink $basedir/i3/i3blocks $bindir/i3blocks
 
 if [ -e "$postinst" ]; then
     echo "Running post install..."
