@@ -185,6 +185,8 @@ assign [class="^Spotify"] $ws6
 assign [class="^discord"] $ws2
 assign [class="^Steam"] $ws8
 assign [class="^Java"] $ws7
+assign [class="^Synergy"] $ws4
+assign [class="^AnyDesk"] $ws4
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
