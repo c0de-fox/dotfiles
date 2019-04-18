@@ -1,5 +1,12 @@
+syntax on
+" Convert tabs to spaces
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+colorscheme torte
+
+" Show tabs as arrows, and trailing whitespace as pips
+set list
+set listchars=tab:\→\ ,trail:·
+
 execute pathogen#infect()
-syntax on
 filetype plugin indent on
