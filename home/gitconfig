@@ -43,8 +43,8 @@
   cmd =fugitive vim -f -c \"Gdiff\" \"$MERGED\"
 
 [user]
-  email = c0de@c0defox.es
-  name  = David Todd
+	email = dtodd@oceantech.com
+	name = David Todd
 
 [include]
   path = ~/.githubtokens
