@@ -79,7 +79,8 @@ symlink $basedir/home/tmux.conf $HOME/.tmux.conf
 symlink $basedir/home/vimrc $HOME/.vimrc
 symlink $basedir/home/gitconfig $HOME/.gitconfig
 symlink $basedir/home/Xresources $HOME/.Xresources
-symlink $basedir/home/terminator $Home/.config/terminator
+symlink $basedir/home/terminator $HOME/.config/terminator
+symlink $basedir/home/stalonetrayrc $HOME/.stalonetrayrc
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle

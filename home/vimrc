@@ -8,5 +8,6 @@ colorscheme torte
 set list
 set listchars=tab:\→\ ,trail:·
 
+
 execute pathogen#infect()
 filetype plugin indent on

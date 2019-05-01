@@ -1,8 +1,8 @@
 # TODO: Make this only run once, even if the user reloads i3-config (mod-shift-r)
 # tray icons(DP-0 is the primary display device's name,use the command "xrandr" to see.)
-exec --no-startup-id xrandr --output DP-0 --primary
+exec --no-startup-id xrandr --output DP1 --primary
 # Put Apple Cinima Display on the right of DP-0
-exec --no-startup-id xrandr --output DVI-I-1 --right-of DP-0
+exec --no-startup-id xrandr --output DP2 --left-of DP1
 
 # Use the Super key as $mod, because Alt is used in tmux
 set $mod Mod4
@@ -58,7 +58,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Keybinds
 bindsym $mod+Ctrl+b exec --no-startup-id xfce4-terminal -e 'bmenu'
-bindsym $mod+F2 exec --no-startup-id firefox
+bindsym $mod+F2 exec --no-startup-id google-chrome-stable
 bindsym $mod+F3 exec --no-startup-id pcmanfm
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
@@ -269,14 +269,14 @@ mode "resize" {
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
+exec --no-startup-id stalonetray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id start_conky_mia
-exec --no-startup-id i3-msg 'workspace $ws2; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace $ws2; exec discord'
-
+#exec --no-startup-id i3-msg 'workspace $ws2; exec telegram-desktop'
+#exec --no-startup-id i3-msg 'workspace $ws2; exec discord'
+exec --no-startup-id xautolock -time 10 -locker blurlock
 
 # Timeout to activate screensaver/lockscreen
 exec --no-startup-id xautolock -time 30 -locker i3lock-fancy -p
