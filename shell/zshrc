@@ -73,7 +73,8 @@ plugins=(git \
     virtualenvwrapper \
     catimg \
     fancy-ctrl-z \
-    emoji)
+    emoji \
+    aws)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
