@@ -74,7 +74,8 @@ plugins=(git \
     catimg \
     fancy-ctrl-z \
     emoji \
-    aws)
+    aws \
+    jsontools)
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
