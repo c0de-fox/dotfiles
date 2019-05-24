@@ -1,51 +1,47 @@
 [core]
-  excludesfile = ~/.gitignore
-  editor = vim
-  whitespace = trailing-space,space-before-tab
-  autocrlf = false
-  safecrlf = true
-  preloadindex = 1
-  pager=less -R
-
+	excludesfile = ~/.gitignore
+	editor = vim
+	whitespace = trailing-space,space-before-tab
+	autocrlf = false
+	safecrlf = true
+	preloadindex = 1
+	pager = less -R
 [apply]
-  whitespace = fix
-
+	whitespace = fix
 [color]
-  ui = auto
-  interactive = true
-  status = true
-  branch = true
-  diff = true
-
+	ui = auto
+	interactive = true
+	status = true
+	branch = true
+	diff = true
 [push]
-  default = tracking
-
+	default = tracking
 [alias]
-  lol = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  st = status -sb
-  lerl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  changelog = log --graph --pretty=format:'[%h] -%d %s (%cr) (%an)' --abbrev-commit --no-merges
-  df = diff
-  rpull = pull --rebase --stat
-  pullr = pull --rebase
-  unstage = reset
-  dfc = diff --cached
-  mergemaster = mergetool
-  ci = commit -v
-  push-with-tags = "!git push && git push --tags"
-  pull-with-submodules = "!git pull && git submodule update --init"
-  rpull-with-submodules = "!git pull --rebase --stat && git submodule update --init"
-
+	lol = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	st = status -sb
+	lerl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	changelog = log --graph --pretty=format:'[%h] -%d %s (%cr) (%an)' --abbrev-commit --no-merges
+	df = diff
+	rpull = pull --rebase --stat
+	pullr = pull --rebase
+	unstage = reset
+	dfc = diff --cached
+	mergemaster = mergetool
+	ci = commit -v
+	push-with-tags = !git push && git push --tags
+	pull-with-submodules = !git pull && git submodule update --init
+	rpull-with-submodules = !git pull --rebase --stat && git submodule update --init
 [merge]
-  tool = vimdiff
-
+	tool = vimdiff
 [mergetool "fugitive"]
-  cmd =fugitive vim -f -c \"Gdiff\" \"$MERGED\"
-
+	cmd = fugitive vim -f -c \"Gdiff\" \"$MERGED\"
 [user]
 	email = dtodd@oceantech.com
 	name = David Todd
-
 [include]
-  path = ~/.githubtokens
-  path = ~/.dotoverrides/gitconfig
+	path = ~/.githubtokens
+	path = ~/.dotoverrides/gitconfig
+[diff]
+	guitool = kdiff3
+[difftool "kdiff3"]
+	path = /usr/bin/kdiff3
