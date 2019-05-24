@@ -75,7 +75,8 @@ plugins=(git \
     fancy-ctrl-z \
     emoji \
     aws \
-    jsontools)
+    jsontools \
+    zsh-syntax-highlighting) # zsh-syntax-highlighting must remain the last plugin
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
