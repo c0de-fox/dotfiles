@@ -4,7 +4,8 @@ exec --no-startup-id xrandr --output DP1 --primary
 # Put Apple Cinima Display on the right of DP-0
 exec --no-startup-id xrandr --output DP2 --left-of DP1
 # Third monitor
-exec --no-startup-id xrandr --output VGA1 --left-of DP2
+#exec --no-startup-id xrandr --output VGA1 --left-of DP2
+exec --no-startup-id xrandr --output VGA1 --mode 1920x1200 --left-of DP2
 
 
 # Use the Super key as $mod, because Alt is used in tmux
