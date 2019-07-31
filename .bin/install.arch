@@ -10,6 +10,6 @@ yay -Syu
 
 yay -S tmux zsh vim git\
        terminator rofi feh xcompmgr\
-       i3lock-fancy i3blocks 
+       i3lock-fancy i3blocks ffcast 
 
 }

@@ -48,7 +48,7 @@ exec --no-startup-id $i3_path/wallpaper.sh&
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
@@ -73,6 +73,10 @@ bindsym Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d-%s).png 
 bindsym $mod+Insert exec --no-startup-id  ~/.i3/screenshotter.sh  #i3-scrot -w '%Y-%m-%d_$wx$h.png' # Window
 bindsym $mod+Shift+Insert --release exec --no-startup-id maim ~/Pictures/$(date +%Y-%m-%d).png  #i3-scrot -d '%Y-%m-%d_$wx$h.png' # Fullscreen
 bindsym $mod+Ctrl+Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d).png&& pinta ~/Pictures/$(date +%Y-%m-%d-%s).png # screenshot and edit
+
+# Screen recording
+bindsym Print exec --no-startup-id "ffcast -q $(while slop -q -n -f '-g %g ';do :;done) rec ~/Videos/rec-%si-$(date +%Y-%m-%d-%s).mp4"
+bindsym $mod+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
 
 # change focus
 bindsym $mod+j focus left
