@@ -75,6 +75,7 @@ bindsym $mod+Shift+Insert --release exec --no-startup-id maim ~/Pictures/$(date 
 bindsym $mod+Ctrl+Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d).png&& pinta ~/Pictures/$(date +%Y-%m-%d-%s).png # screenshot and edit
 
 # Screen recording
+bindsym Shift+Print exec --no-startup-id ~/.i3/screencast2gif.sh
 bindsym Print exec --no-startup-id "ffcast -q $(while slop -q -n -f '-g %g ';do :;done) rec ~/Videos/rec-%si-$(date +%Y-%m-%d-%s).mp4"
 bindsym $mod+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
 
