@@ -39,6 +39,7 @@ My dotfiles now include my personalized i3 configuration if you also run the i3w
 * [xcompmgr](https://wiki.archlinux.org/index.php/Xcompmgr) Compisiton Manager (window transparency)
 * [maim](https://github.com/naelstrof/maim) Screenshot utility
 * [powerline](https://wiki.archlinux.org/index.php/Powerline)
+* [ntfy](https://github.com/dschep/ntfy) for Desktop Notifications
 
 ## Branch Info
 
