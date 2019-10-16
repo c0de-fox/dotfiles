@@ -61,3 +61,7 @@ up() {
     fi
     cd $d
 }
+# Usage: search <regex string>
+search () {
+    grep -r "$1" | fzf
+}
