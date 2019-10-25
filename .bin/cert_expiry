@@ -1,0 +1,15 @@
+#!/bin/bash
+# Prints the expiration dates of all TLS Certificates in a directory
+
+# This is usually pem, but can also be crt
+if [[ -z $1 ]]; then
+    echo "certificate type not set, defaulting to pem"
+    filetype="pem"
+else
+    filetype=$1
+fi
+
+for filename in ./*.${filetype}; do
+    echo -n "${filename} expires on: "
+    openssl x509 -noout -dates -in "${filename}" | sed -n '/notAfter/p' | sed 's/^.\{9\}//'
+done
