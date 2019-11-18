@@ -219,6 +219,7 @@ for_window [class="Xfburn"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="steamwebhelper"] floating enable
 for_window [class="terminator"] floating enable sticky enable
+for_window [class="^telegram-desktop"] floating enable sticky enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
