@@ -110,6 +110,9 @@ symlink $basedir/i3/screenshotter.sh $HOME/.i3/screenshotter.sh
 symlink $basedir/i3/compton.conf $HOME/.compton.conf
 symlink $basedir/i3/i3blocks $bindir/i3blocks
 
+echo "Installing shell-history"
+python3.6 -m pip install shellhistory
+
 if [ -e "$postinst" ]; then
     echo "Running post install..."
     source "$postinst"
