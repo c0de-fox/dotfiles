@@ -39,3 +39,10 @@ fi
 if [[ -z "$TMUX" && "$TMUXATT" != "TRUE" && "$ENABLE_TMUXAC" != "FALSE" ]]; then
     tmux attach -t C0DE || tmux new -s C0DE
 fi
+
+# Enable shell-history for interactive shells
+# https://github.com/pawamoy/shell-history
+if [[ $- == *i* ]] && command -v shellhistory-location &>/dev/null; then
+    . $(shellhistory-location)
+    shellhistory enable
+fi
