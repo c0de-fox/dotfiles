@@ -81,6 +81,8 @@ symlink $basedir/home/gitconfig $HOME/.gitconfig
 symlink $basedir/home/Xresources $HOME/.Xresources
 symlink $basedir/home/terminator $HOME/.config/terminator
 symlink $basedir/home/stalonetrayrc $HOME/.stalonetrayrc
+symlink $basedir/home/.config $HOME/.config
+symlink $basedir/home/.local $HOME/.local
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
