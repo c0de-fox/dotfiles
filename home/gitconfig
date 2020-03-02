@@ -31,6 +31,7 @@
 	push-with-tags = !git push && git push --tags
 	pull-with-submodules = !git pull && git submodule update --init
 	rpull-with-submodules = !git pull --rebase --stat && git submodule update --init
+	freeze = !git-freeze
 [merge]
 	tool = vimdiff
 [mergetool "fugitive"]
