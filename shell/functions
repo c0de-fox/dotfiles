@@ -65,3 +65,14 @@ up() {
 search () {
     grep -r "$1" | fzf
 }
+# Usage: replay <number of commands> to repeat. Blank for 1
+replay() {
+    from="${1:-2}"
+    to="${2:-1}"
+    if [ "$from" -ne "$to" ]; then
+        for i in `seq "$from" -1 "$(($to + 1))"`; do
+            printf "$(fc -ln -${i} -${i}) && "
+        done
+    fi
+    $(fc -ln -${to} -${to})
+}

@@ -4,7 +4,7 @@ source ~/dotfiles/shell/aliases
 source ~/dotfiles/shell/functions
 
 # History Settings
-export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
+export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd..:replay"
 export HISTSIZE=25000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=10000
