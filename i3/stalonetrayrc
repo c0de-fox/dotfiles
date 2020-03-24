@@ -67,6 +67,8 @@ log_level err
                              # * use_icon_hints - use icon window hints to
                              #     dtermine icon size
 
+kludges force_icons_size
+
 # max_geometry <geometry>    # maximal tray dimensions; 0 in width/height means
                              # no limit
 max_geometry 0x0
@@ -130,7 +132,7 @@ window_strut auto
 
 # window_type <type>         # set the EWMH-compatible window type; one of:
                              # desktop, dock, normal, toolbar, utility
-window_type dock
+window_type utility
 
 # xsync [<bool>]             # whether to operate on X server synchronously (SLOOOOW)
 xsync false
