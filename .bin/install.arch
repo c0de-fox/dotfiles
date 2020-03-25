@@ -6,11 +6,11 @@
 sudo pacman -Syu
 sudo pacman -S yay
 
-yay -Syu 
+yay -Syu
 
 yay -S tmux zsh vim git\
        terminator rofi feh xcompmgr\
-       i3lock-fancy i3blocks ffcast 
+       i3lock-fancy i3blocks ffcast
 
 sudo pip install ntfy
 }
