@@ -1,6 +1,6 @@
 #!/bin/bash
 shopt -s nullglob
- 
+
 #===change these config start===
 
 #wallpapers directory path
@@ -20,8 +20,8 @@ while true; do
 		[[ -f $i ]] && files+=("$i")
 	done
 	range=${#files[@]}
-	
+
 	((range)) && feh --bg-scale "${files[RANDOM % range]}"
-	
+
 	sleep $interval
 done

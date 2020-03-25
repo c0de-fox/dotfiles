@@ -4,3 +4,9 @@
 *.swo
 *.DS_STORE
 *desktop.ini
+
+home/.config/Code
+home/.config/google-chrome
+home/.config/libfm
+home/.config/pcmanfm
+home/.config/yay

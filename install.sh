@@ -41,7 +41,7 @@ read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 
 read -p "[Dotfiles] Would you like to detect distro and auto-install dependencies? [Y/n]: " line
 if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
-    distrourl="https://raw.githubusercontent.com/alopexc0de/dotfiles/master/.bin"
+    distrourl="https://raw.githubusercontent.com/alopexc0de/dotfiles/master/internal_bin"
     if [ -f /etc/arch-release ]; then
         bash <(curl -sL $distrourl/install.arch)
     elif [ -f /etc/debian_version ]; then
@@ -57,9 +57,9 @@ if ! which git >>/dev/null ; then
 fi
 
 # If the update script exists, try to do a normal update
-if [ -x "$basedir/.bin/check_for_upgrade.sh" ]; then
+if [ -x "$basedir/internal_bin/check_for_upgrade.sh" ]; then
     source "$basedir/shell/env"
-    env _DOTFILES=$basedir DISABLE_UPDATE_PROMPT='FALSE' zsh -f $basedir/.bin/check_for_upgrade.sh
+    env _DOTFILES=$basedir DISABLE_UPDATE_PROMPT='FALSE' zsh -f $basedir/internal_bin/check_for_upgrade.sh
 else
     echo "Cloning dotfiles to $basedir"
     rm -rf $basedir
@@ -69,16 +69,18 @@ fi
 # Start installing config
 
 echo "Creating Symlinks..."
-symlink $basedir/shell/zshrc $HOME/.zshrc
-symlink $basedir/shell/bashrc $HOME/.bashrc
-symlink $basedir/home/tmux.conf $HOME/.tmux.conf
-symlink $basedir/home/vimrc $HOME/.vimrc
-symlink $basedir/home/gitconfig $HOME/.gitconfig
-symlink $basedir/home/Xresources $HOME/.Xresources
-symlink $basedir/home/terminator $HOME/.config/terminator
-symlink $basedir/home/stalonetrayrc $HOME/.stalonetrayrc
-symlink $basedir/home/.config $HOME/.config
+# Environment
 symlink $basedir/home/.local $HOME/.local
+symlink $basedir/home/.config $HOME/.config
+
+symlink $basedir/home/Xresources $HOME/.Xresources
+symlink $basedir/home/gitconfig $HOME/.gitconfig
+
+symlink $basedir/home/shell/tmux.conf $HOME/.tmux.conf
+symlink $basedir/home/shell/bashrc $HOME/.bashrc
+symlink $basedir/home/shell/zshrc $HOME/.zshrc
+symlink $basedir/home/shell/vimrc $HOME/.vimrc
+
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
@@ -107,6 +109,7 @@ symlink $basedir/i3/wallpaper.sh $HOME/.i3/wallpaper.sh
 symlink $basedir/i3/screenshotter.sh $HOME/.i3/screenshotter.sh
 symlink $basedir/i3/compton.conf $HOME/.compton.conf
 symlink $basedir/i3/i3blocks $bindir/i3blocks
+symlink $basedir/i3/stalonetrayrc $HOME/.stalonetrayrc
 
 echo "Installing shell-history"
 python3 -m pip install shellhistory

@@ -1,7 +1,7 @@
 # Include our shared environment stuff
-source ~/dotfiles/shell/env
-source ~/dotfiles/shell/aliases
-source ~/dotfiles/shell/functions
+source ~/dotfiles/home/shell/env
+source ~/dotfiles/home/shell/aliases
+source ~/dotfiles/home/shell/functions
 
 # Basic options
 export HISTCONTROL=ignoredups
@@ -47,7 +47,7 @@ function timer_stop {
 }
 
 trap 'timer_start' DEBUG
-PROMPT_COMMAND=timer_stop 
+PROMPT_COMMAND=timer_stop
 
 # Prompt
 #  Black       0;30     Dark Gray     1;30
@@ -85,10 +85,10 @@ PS1="$PS1""${LGREEN}[${LPURPLE}\u${WHITE}@${LBLUE}\h${LGREEN}]-(${YELLOW}\w${LGR
 PS1="$PS1""\n  [${LRED}\@ ${LGRAY}Last:${WHITE} \${timer_show}s ${LCYAN}Err:"
 
 # Error code test - not working
-#if [[ \$? = "0" ]] # If last program exited with 0 (good exit) 
-#then 
+#if [[ \$? = "0" ]] # If last program exited with 0 (good exit)
+#then
 	PS1="$PS1"" ${WHITE}\$?" # show white error code
-#else 
+#else
 #	PS1="$PS1"" ${LRED}\$?" # if last program exited with anything else, show red error code
 #fi
 
