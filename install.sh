@@ -68,10 +68,6 @@ fi
 
 # Start installing config
 
-echo "Installing Oh-My-ZSH"
-echo "When the install is done, type `exit` to continue installing dotfiles"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 echo "Creating Symlinks..."
 symlink $basedir/shell/zshrc $HOME/.zshrc
 symlink $basedir/shell/bashrc $HOME/.bashrc
@@ -93,9 +89,9 @@ cd $HOME/.vim/bundle
 git clone git://github.com/tpope/vim-sensible.git
 
 echo "Adding user bin..."
-mkdir -p $bindir $basedir/.bin
-for path in $basedir/bin/*; do
-    symlink $basedir/$path $bindir/$(basename $path)
+mkdir -p $bindir
+for file_path in $basedir/bin/*; do
+    symlink $file_path $bindir/$(basename $file_path)
 done
 
 echo "Changing default shell to ZSH..."
@@ -113,7 +109,11 @@ symlink $basedir/i3/compton.conf $HOME/.compton.conf
 symlink $basedir/i3/i3blocks $bindir/i3blocks
 
 echo "Installing shell-history"
-python3.6 -m pip install shellhistory
+python3 -m pip install shellhistory
+
+echo "Installing Oh-My-ZSH"
+echo "When the install is done, type `exit` to continue installing dotfiles"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 if [ -e "$postinst" ]; then
     echo "Running post install..."
