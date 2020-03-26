@@ -74,7 +74,7 @@ symlink $basedir/home/.local $HOME/.local
 symlink $basedir/home/.config $HOME/.config
 
 echo "Building i3 configuration"
-$HOME/.config/i3/build-i3-config
+$basedir/bin/build-i3-config
 
 echo "Linking X-Session files"
 # Stuff related to the X-Session
