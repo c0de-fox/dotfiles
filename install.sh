@@ -80,6 +80,7 @@ echo "Linking X-Session files"
 # Stuff related to the X-Session
 symlink $basedir/home/.config/compton.conf $HOME/.compton.conf
 symlink $basedir/home/Xresources $HOME/.Xresources
+symlink $basedir/home/xinitrc $HOME/.xinitrc
 
 echo "Linking shell files"
 # Shell stuff
@@ -87,6 +88,8 @@ symlink $basedir/home/shell/tmux.conf $HOME/.tmux.conf
 symlink $basedir/home/shell/bashrc $HOME/.bashrc
 symlink $basedir/home/shell/zshrc $HOME/.zshrc
 symlink $basedir/home/shell/vimrc $HOME/.vimrc
+symlink $basedir/home/dmenurc $HOME/.dmenurc
+symlink $basedir/home/dmrc $HOME/.dmrc
 
 # Global git
 symlink $basedir/home/gitconfig $HOME/.gitconfig
