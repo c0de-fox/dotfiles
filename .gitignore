@@ -15,6 +15,7 @@ home/.config/Synergy
 home/.config/menus
 home/.config/libreoffice
 
+home/.local/share/Trash
 home/.local/share/clipit
 home/.local/share/recently-used.xbel
 home/.local/share/desktop-directories
