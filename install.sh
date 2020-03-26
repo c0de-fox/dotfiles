@@ -73,6 +73,9 @@ echo "Linking config and local files"
 symlink $basedir/home/.local $HOME/.local
 symlink $basedir/home/.config $HOME/.config
 
+echo "Building i3 configuration"
+$HOME/.config/i3/build-i3-config
+
 echo "Linking X-Session files"
 # Stuff related to the X-Session
 symlink $basedir/home/.config/compton.conf $HOME/.compton.conf
