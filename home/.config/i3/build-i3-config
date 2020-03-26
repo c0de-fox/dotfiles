@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DF_PATH=${HOME}/dotfiles/home/.config/i3
+CONFIG_PATH=${DF_PATH}/conf.d
+DST_FILE=${DF_PATH}/config
+
+echo "# This file is generated with the \`build-i3-config\` command" > ${DST_FILE}
+echo "# Configuration has been broken up into the \`conf.d\` directory" >> ${DST_FILE}
+cat ${CONFIG_PATH}/base.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/gaps.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/workspace.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/i3bar.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/window-classes.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/layout-keybinds.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/keybinds.conf >> ${DST_FILE}
+cat ${CONFIG_PATH}/autostart.conf >> ${DST_FILE}
