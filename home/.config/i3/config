@@ -226,6 +226,7 @@ bar {
 # Begin configuration for window classes
 
 # Open specific applications in floating mode
+for_window [class="Urxvt"] floating enable border normal
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
@@ -390,9 +391,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id stalonetray
 exec --no-startup-id clipit
-exec_always --no-startup-id ff-theme-util
+# exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id start_conky_mia
+# exec --no-startup-id start_conky_mia
 
 # Random wallpaper
 exec --no-startup-id $i3_path/wallpaper.sh&
