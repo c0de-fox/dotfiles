@@ -68,19 +68,28 @@ fi
 
 # Start installing config
 
-echo "Creating Symlinks..."
+echo "Linking config and local files"
 # Environment
 symlink $basedir/home/.local $HOME/.local
 symlink $basedir/home/.config $HOME/.config
 
+echo "Linking X-Session files"
+# Stuff related to the X-Session
+symlink $basedir/home/.config/compton.conf $HOME/.compton.conf
 symlink $basedir/home/Xresources $HOME/.Xresources
-symlink $basedir/home/gitconfig $HOME/.gitconfig
 
+echo "Linking shell files"
+# Shell stuff
 symlink $basedir/home/shell/tmux.conf $HOME/.tmux.conf
 symlink $basedir/home/shell/bashrc $HOME/.bashrc
 symlink $basedir/home/shell/zshrc $HOME/.zshrc
 symlink $basedir/home/shell/vimrc $HOME/.vimrc
 
+# Global git
+symlink $basedir/home/gitconfig $HOME/.gitconfig
+
+echo "Installing shell-history"
+python3 -m pip install shellhistory
 
 echo "Installing VIM Pathogen..."
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
@@ -98,21 +107,6 @@ done
 
 echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
-
-# Install i3 config
-echo "Installing i3 configuration"
-mkdir -p $HOME/.config/i3
-mkdir -p $HOME/.i3
-symlink $basedir/i3/config $HOME/.config/i3/config
-symlink $basedir/i3/i3blocks.conf $HOME/.i3/i3blocks.conf
-symlink $basedir/i3/wallpaper.sh $HOME/.i3/wallpaper.sh
-symlink $basedir/i3/screenshotter.sh $HOME/.i3/screenshotter.sh
-symlink $basedir/i3/compton.conf $HOME/.compton.conf
-symlink $basedir/i3/i3blocks $bindir/i3blocks
-symlink $basedir/i3/stalonetrayrc $HOME/.stalonetrayrc
-
-echo "Installing shell-history"
-python3 -m pip install shellhistory
 
 echo "Installing Oh-My-ZSH"
 echo "When the install is done, type `exit` to continue installing dotfiles"
