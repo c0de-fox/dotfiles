@@ -28,6 +28,7 @@ For example, you may want to add commands such as `git config --global user.name
 
 ## Dependencies
 My dotfiles now include my personalized i3 configuration if you also run the i3wm.
+This is a bit outdated, so you can err on the side of caution and install other stuff as it's needed
 
 * [i3-gaps](https://github.com/Airblader/i3) WM
 * [i3blocks](https://github.com/vivien/i3blocks) i3bar scheduler
@@ -45,9 +46,9 @@ My dotfiles now include my personalized i3 configuration if you also run the i3w
 
 This is the primary branch.
 It includes changes that should be included in most, if not
-all of the different configurations that may result of different 
-system use. 
+all of the different configurations that may result of different
+system use.
 
-For now, there is the master and macos
-The macos branch is mostly athestic changes and plugins chosen
-for my macbook. 
+For now, there are the master, macos and workpc branches.
+
+The workpc branch contains a lot of configuration from a base Manjaro install
