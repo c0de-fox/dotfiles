@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd ~/Music
+selected_song=$(ls | rofi -i -dmenu -p "Select a song to play")
+notify-send "Playing ${selected_song}"
+mplayer ${selected_song}
