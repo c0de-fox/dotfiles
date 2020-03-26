@@ -5,6 +5,8 @@
 *.DS_STORE
 *desktop.ini
 
+home/.config/i3/config
+
 home/.config/Code
 home/.config/google-chrome
 home/.config/yay
