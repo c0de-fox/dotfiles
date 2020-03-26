@@ -10,6 +10,8 @@
 ## Distro auto-install
 This feature will install the basic dependencies automatically if you approve at the prompt, assumes that you have sudo access.
 
+These are pretty out of date like the dependencies list below. Your milage may vary if you choose to use the auto-install
+
 Currently available for:
 - Arch/Manjaro Linux (pacman+yay)
 - Debian Linux (apt)
