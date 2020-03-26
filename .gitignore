@@ -12,6 +12,11 @@ home/.config/spotify
 home/.config/dconf
 home/.config/Mousepad
 home/.config/Synergy
+home/.config/menus
+home/.config/libreoffice
 
 home/.local/share/clipit
 home/.local/share/recently-used.xbel
+home/.local/share/desktop-directories
+home/.local/share/icons
+home/.local/share/applications/chrome-*
