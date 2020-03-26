@@ -12,3 +12,5 @@ home/.config/pcmanfm
 home/.config/yay
 home/.config/spotify
 home/.config/dconf
+
+home/.local/share/clipit
