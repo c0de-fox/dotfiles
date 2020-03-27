@@ -341,6 +341,7 @@ bindsym $mod+Shift+Return exec --no-startup-id urxvt
 bindsym $mod+F2 exec --no-startup-id google-chrome-stable
 bindsym $mod+F3 exec --no-startup-id pcmanfm
 bindsym $mod+F4 exec --no-startup-id code
+bindsym $mod+F6 exec --no-startup-id ~/bin/music_player
 
 # Help
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
