@@ -255,6 +255,8 @@ for_window [class="^telegram-desktop"] floating enable sticky enable
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+bindsym $mod+Shift+f fullscreen toggle global
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
