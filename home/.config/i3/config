@@ -277,12 +277,23 @@ bindsym $mod+minus scratchpad show
 # split orientation
 bindsym $mod+h split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
-bindsym $mod+q split toggle
+bindsym $mod+q split toggle;exec notify-send 'tile direction toggled'
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# To prevent accidentally changing the workspace mode, those
+# keybinds are hidden behind "view_mode"
+bindsym $mod+Shift+m mode "view_mode"
+mode "view_mode" {
+    # change container layout (stacked, tabbed, toggle split)
+    # Also send a notification saying the mode was changed
+    bindsym $mod+s layout stacking;exec notify-send 'Stacking Mode'
+    bindsym $mod+w layout tabbed;exec notify-send 'Tabbed Mode'
+    # Default mode
+    bindsym $mod+e layout toggle split;exec notify-send 'Split Mode'
+
+    # exit resize mode: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # change focus vim keybinding
 bindsym $mod+j focus left
