@@ -21,3 +21,5 @@ home/.local/share/recently-used.xbel
 home/.local/share/desktop-directories
 home/.local/share/icons
 home/.local/share/applications/chrome-*
+home/.local/share/gvfs-metadata
+home/.local/share/remmina
