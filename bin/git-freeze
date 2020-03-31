@@ -1,0 +1,151 @@
+#!/bin/sh
+#
+# Copyright (c) 2011 Scott Moynes
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#
+
+OPTIONS_SPEC="\
+git freeze -l [-r] [<remote-name>]
+git freeze -t <frozen-name>
+git freeze -p [-d] [<remote-name>] <frozen-name>
+git freeze -f [<remote-name>] <branch-name>
+
+Archive refs to freezer.
+--
+h         show help
+
+ Global options
+r,remote  operate on remotes
+d,delete  delete frozen branch from remotes
+
+ Command options
+l,list    list frozen refs
+t,thaw    thaw frozen ref into a branch
+p,push    push frozen ref to remote
+f,fetch   fetch frozen ref from remote
+"""
+
+SUBDIRECTORY_OK=1
+. "$(git --exec-path)/git-sh-setup"
+
+for arg; do
+    case "$arg" in
+        # Global options
+        -r) REMOTE_OPT=1 ; shift ;;
+        -a) ALL_OPT=1 ; shift ;;
+        -d) DELETE_OPT=1; shift ;;
+
+        # Command options
+        -l) LIST_COMMAND=1 ; shift ;;
+        -t) THAW_COMMAND=1 ; shift ;;
+        -p) PUSH_COMMAND=1 ; shift ;;
+        -f) FETCH_COMMAND=1 ; shift ;;
+        --) shift; break ;;
+    esac
+done
+
+list() {
+    if [ -z "$REMOTE_OPT" ]; then
+        git show-ref --abbrev=8 | \
+            sane_grep 'refs/freezer/' | \
+            LANG=C LC_ALL=C sed -e 's|\([0-9a-f]*\) refs/freezer/\(.*\)|\2 (\1)|'
+    else
+        git ls-remote | sane_grep 'refs/freezer/' | \
+            LANG=C LC_ALL=C sed -e 's|\([0-9a-f]\{8\}\).*refs/freezer/\(.*\)|\2 (\1)|'
+    fi
+}
+
+thaw() {
+    BRANCH="$1"
+    if [ -z "$BRANCH" ]; then
+        die "Frozen branch name argument required"
+    fi
+
+    FREEZER_REF=$(git show-ref --hash refs/freezer/$BRANCH)
+
+    echo Thawing branch: $BRANCH
+    git update-ref refs/heads/$BRANCH $FREEZER_REF || \
+        die "Error: unable to thaw ref refs/heads/$BRANCH $FREEZER_REF"
+    git update-ref -d refs/freezer/$BRANCH $FREEZER_REF
+}
+
+push() {
+    if [ -z "$2" ]; then
+        REMOTE=origin
+        BRANCH=$1
+    else
+        REMOTE=$1
+        BRANCH=$2
+    fi
+
+    if [ -z "$BRANCH" ]; then
+        die "Frozen branch name argument required"
+    fi
+
+    if [ -z "$DELETE_OPT" ]; then
+        git push "$REMOTE" "refs/freezer/$BRANCH:refs/freezer/$BRANCH"
+    else
+        git push "$REMOTE" ":refs/freezer/$BRANCH"
+    fi
+}
+
+freeze() {
+    BRANCH="$1"
+    if [ -z "$BRANCH" ]; then
+        die "Branch name argument is required"
+    fi
+
+    BRANCH_REF=$(git show-ref --hash --heads "$BRANCH")
+    if [ $? -ne 0 ]; then
+        die "Branch does not exist: $BRANCH"
+    fi
+
+    echo Freezing branch: $BRANCH
+    git update-ref refs/freezer/$BRANCH $BRANCH_REF || \
+        die "Error: unable to update ref refs/freezer/$BRANCH $BRANCH_REF"
+    git branch -D $BRANCH 2>&1 > /dev/null || die "Unable to delete branch $BRANCH"
+
+}
+
+fetch() {
+    if [ -z "$2" ]; then
+        REMOTE=origin
+        BRANCH=$1
+    else
+        REMOTE=$1
+        BRANCH=$2
+    fi
+    : ${BRANCH:="*"} ${REMOTE:=origin}
+
+    echo Fetching frozen branches
+    git fetch $REMOTE "refs/freezer/${BRANCH}:refs/freezer/${BRANCH}"
+}
+
+if [ $LIST_COMMAND ]; then
+    list
+elif [ $THAW_COMMAND ]; then
+    thaw "$1"
+elif [ $PUSH_COMMAND ]; then
+    push "$1" "$2"
+elif [ $FETCH_COMMAND ]; then
+    fetch "$1" "$2"
+else
+    freeze "$1"
+fi
