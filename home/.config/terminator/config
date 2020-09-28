@@ -1,8 +1,14 @@
 [global_config]
-  enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
-  inactive_color_offset = 0.84347826087
   title_transmit_bg_color = "#243433"
+  inactive_color_offset = 0.84347826087
+  enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
 [keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.77
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
@@ -13,9 +19,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    background_darkness = 0.91
-    background_type = transparent
-    cursor_color = "#aaaaaa"
-    scrollback_infinite = True
