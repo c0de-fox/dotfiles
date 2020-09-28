@@ -32,6 +32,7 @@
 	pull-with-submodules = !git pull && git submodule update --init
 	rpull-with-submodules = !git pull --rebase --stat && git submodule update --init
 	freeze = !git-freeze
+	tags = log -n1 --pretty=format:%h%d
 [merge]
 	tool = vimdiff
 [mergetool "fugitive"]
@@ -46,3 +47,5 @@
 	guitool = kdiff3
 [difftool "kdiff3"]
 	path = /usr/bin/kdiff3
+[pull]
+	rebase = true
