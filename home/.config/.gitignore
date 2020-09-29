@@ -1,1 +1,16 @@
-!.gitignore
+GIMP/*
+QDirStat/*
+QtProject.conf
+balena-etcher-electron/*
+binwalk/*
+clipit/*
+configstore/*
+filezilla/*
+kdiff3rc
+obs-studio/*
+pulse/*
+sqlitebrowser/*
+teamviewer/*
+xbuild/*
+manjaro/*
+
