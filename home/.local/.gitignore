@@ -1,1 +1,10 @@
-!.gitignore
+bin/*
+lib/*
+share/TelegramDesktop/*
+share/applications/*
+share/keyrings/*
+share/man/*
+share/mime/*
+share/teamviewer15/*
+share/virtualenv/*
+share/virtualenvs/*
