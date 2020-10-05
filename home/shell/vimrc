@@ -6,8 +6,12 @@ colorscheme iceberg
 
 " Default GUI  Window Geometry
 if has("gui_running")
+    " Preferred window size
     set lines=29 columns=105
 endif
+
+" Show tabs at the top of the editor
+set showtabline=2
 
 " Render newlines with '$'
 " Render Tabs with '>-'
