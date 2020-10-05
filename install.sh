@@ -73,6 +73,10 @@ echo "Linking config and local files"
 symlink $basedir/home/.local $HOME/.local
 symlink $basedir/home/.config $HOME/.config
 
+echo "Installing Oh-My-ZSH"
+echo "When the install is done, type \"exit\" to continue installing dotfiles"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 echo "Building i3 configuration"
 $basedir/bin/build-i3-config
 
@@ -105,6 +109,12 @@ echo "Installing VIM Sensible..."
 cd $HOME/.vim/bundle
 git clone git://github.com/tpope/vim-sensible.git
 
+echo "Installing VIM Iceberg theme"
+cd /tmp
+wget https://www.vim.org/scripts/download_script.php?src_id=25718 -O iceberg.zip
+unzip iceberg.zip
+cp -r iceberg.vim/{autoload,colors} ~/.vim/
+
 echo "Adding user bin..."
 mkdir -p $bindir
 for file_path in $basedir/bin/*; do
@@ -113,10 +123,6 @@ done
 
 echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
-
-echo "Installing Oh-My-ZSH"
-echo "When the install is done, type `exit` to continue installing dotfiles"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 if [ -e "$postinst" ]; then
     echo "Running post install..."
