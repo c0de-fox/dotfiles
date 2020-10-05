@@ -209,8 +209,8 @@ bar {
             todo \
             ping \
             network_traffic \
-            time \
             date \
+            time \
         -p \
             root.path=/ \
             root.critical="50" \
@@ -220,7 +220,7 @@ bar {
             todo.file="~/todo.vim" \
             ping.address="1.1.1.1" \
             time.format="%H:%M" \
-            date.format="%a, %b %d, %Y" \
+            date.format="%a, %b %d" \
         -a \
             disk \
             ping \
