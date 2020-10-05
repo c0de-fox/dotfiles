@@ -19,6 +19,13 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 " Turn on Line numbering
 set number
 
+" Highlight all strings that match search
+set hlsearch
+
+" Turn on Spell checking - English Dictionary only
+set spell
+set spelllang=en_us
+
 " Turn on Mouse Aware mode, does lots of stuff
 " What we're most interested in is the fact that
 " it won't let us highlight the line numbers
