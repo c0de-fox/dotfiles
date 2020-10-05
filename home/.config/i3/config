@@ -198,14 +198,42 @@ assign [class="^Code"] $ws5
 
 bar {
     #status_command i3status -c ~/.config/i3/i3status.conf
-    status_command i3blocks -c $i3_path/i3blocks.conf
+    #status_command i3blocks -c $i3_path/i3blocks.conf
+    status_command bumblebee-status \
+        -m \
+            disk:root \
+            cpu2 \
+            memory \
+            playerctl \
+            title \
+            todo \
+            ping \
+            network_traffic \
+            time \
+            date \
+        -p \
+            root.path=/ \
+            root.critical="50" \
+            cpu2.layout="cpu2.cpuload cpu2.coresload" \
+            cpu2.colored=1 \
+            cpu2.temp_pattern="temp" \
+            todo.file="~/todo.vim" \
+            ping.address="1.1.1.1" \
+            time.format="%H:%M" \
+            date.format="%a, %b %d, %Y" \
+        -a \
+            disk \
+            ping \
+        -t \
+            dracula-powerline
+
 
     position top
     #mode hide
-    workspace_buttons yes
-    tray_output DP-0
+    #workspace_buttons yes
+    #tray_output DP-0
     tray_padding 0
-    separator_symbol "|"
+    #separator_symbol "|"
 
     colors {
         background #222D31
@@ -219,7 +247,7 @@ bar {
         binding_mode       #16a085 #2C2C2C #F9FAF9
         urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
-    #height 30
+    height 20
 }
 
 # End i3-bar configuration
@@ -228,6 +256,7 @@ bar {
 # Open specific applications in floating mode
 for_window [class="URxvt"] floating enable border pixel 0
 for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="(?i)gvim"] floating enable boarder pixel 0
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
