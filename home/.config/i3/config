@@ -235,19 +235,32 @@ bar {
     tray_padding 0
     #separator_symbol "|"
 
+#    colors {
+#        background #222D31
+#        statusline #F9FAF9
+#        separator  #454947
+#
+#                          # border backgr. text
+#        focused_workspace  #F9FAF9 #16a085 #292F34
+#        active_workspace   #595B5B #353836 #FDF6E3
+#        inactive_workspace #595B5B #222D31 #EEE8D5
+#        binding_mode       #16a085 #2C2C2C #F9FAF9
+#        urgent_workspace   #16a085 #FDF6E3 #E5201D
+#    }
+#
     colors {
-        background #222D31
+        background #2F343F
         statusline #F9FAF9
         separator  #454947
 
-                          # border backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
+#                      	   border  backgr. text
+        focused_workspace  #F9FAF9 #232729 #FDF6E3
         active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+        inactive_workspace #595B5B #2F343F #49505F
+        binding_mode       #232729 #2C2C2C #F9FAF9
+        urgent_workspace   #232729 #FDF6E3 #E5201D
     }
-    height 20
+    height 18
 }
 
 # End i3-bar configuration
@@ -271,7 +284,7 @@ for_window [class="Pamac-manager"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="steamwebhelper"] floating enable
@@ -434,7 +447,7 @@ bindsym $mod+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id stalonetray
+#exec --no-startup-id stalonetray
 exec --no-startup-id clipit
 # exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
