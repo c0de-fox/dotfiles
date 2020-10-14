@@ -9,4 +9,3 @@ source poky/oe-init-build-env
 bitbake -c clean core-image-wipr-server
 bitbake core-image-wipr-server
 
-
