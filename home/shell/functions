@@ -61,10 +61,23 @@ up() {
     fi
     cd $d
 }
+# Search inside files for a string
 # Usage: search <regex string>
 search () {
     grep -r "$1" | fzf
 }
+# Search for a file by its name
+# Usage: ff <filename> (optional) <max depth>
+ff() { #find file
+  if [ -z "${2}" ]; then
+    find . -type f -iname "*${1}*"
+  else
+    find . -type f -maxdepth "${2}" -iname "*${1}*"
+  fi
+}
+# Search for a file by its name and edit it
+# Usage: vf <filename> (optional) <max depth>
+vf() {  vim "$(ff "$@" | fzf)"; }
 # Usage: replay <number of commands> to repeat. Blank for 1
 replay() {
     from="${1:-2}"
