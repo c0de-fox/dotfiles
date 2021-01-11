@@ -62,12 +62,12 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-client.focused          #556064 #556064 #80FFF9 #FDF6E3
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000
-client.background       #2B2C2B
+client.focused          #a093c7 #a093c7 #c6c8d1 #b4be82
+client.focused_inactive #ada0d3 #ada0d3 #c6c8d1 #e2a478
+client.unfocused        #6b7089 #6b7089 #c6c8d1 #84a0c6
+client.urgent           #e27878 #e27878 #CB4B16 #CB4B16
+client.placeholder      #89b8c2 #89b8c2 #c6c8d1 #95c4ce
+client.background       #161821
 
 # End base configuration
 # Begin i3-gaps configuration - Stuff specific to i3-gaps
@@ -192,41 +192,37 @@ assign [class="^Code"] $ws5
 # End workspace configuration
 # Begin i3-bar configuration
 
-#bar {
-#    status_command i3status
-#}
-
 bar {
     #status_command i3status -c ~/.config/i3/i3status.conf
-    #status_command i3blocks -c $i3_path/i3blocks.conf
-    status_command bumblebee-status \
-        -m \
-            disk:root \
-            cpu2 \
-            memory \
-            playerctl \
-            title \
-            todo \
-            ping \
-            network_traffic \
-            date \
-            time \
-        -p \
-            root.path=/ \
-            root.critical="50" \
-            cpu2.layout="cpu2.cpuload cpu2.coresload" \
-            cpu2.colored=1 \
-            cpu2.temp_pattern="temp" \
-            todo.file="~/todo.vim" \
-            ping.address="1.1.1.1" \
-            time.format="%H:%M" \
-            date.format="%a, %b %d" \
-        -a \
-            disk \
-            ping \
-        -t \
-            iceberg-dark-powerline
-
+    status_command i3blocks -c $i3_path/i3blocks.conf
+#    status_command bumblebee-status \
+#        -m \
+#            disk:root \
+#            cpu2 \
+#            memory \
+#            playerctl \
+#            title \
+#            todo \
+#            ping \
+#            network_traffic \
+#            date \
+#            time \
+#        -p \
+#            root.path=/ \
+#            root.critical="50" \
+#            cpu2.layout="cpu2.cpuload cpu2.coresload" \
+#            cpu2.colored=1 \
+#            cpu2.temp_pattern="temp" \
+#            todo.file="~/todo.vim" \
+#            ping.address="1.1.1.1" \
+#            time.format="%H:%M" \
+#            date.format="%a, %b %d" \
+#        -a \
+#            disk \
+#            ping \
+#        -t \
+#            iceberg-dark-powerline
+#
 
     position top
     #mode hide
@@ -235,30 +231,17 @@ bar {
     tray_padding 0
     #separator_symbol "|"
 
-#    colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
-#
-#                          # border backgr. text
-#        focused_workspace  #F9FAF9 #16a085 #292F34
-#        active_workspace   #595B5B #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16a085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16a085 #FDF6E3 #E5201D
-#    }
-#
     colors {
-        background #2F343F
-        statusline #F9FAF9
-        separator  #454947
+        background #161821
+        statusline #c6c8d1
+        separator  #161821
 
 #                      	   border  backgr. text
-        focused_workspace  #F9FAF9 #232729 #FDF6E3
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #2F343F #49505F
-        binding_mode       #232729 #2C2C2C #F9FAF9
-        urgent_workspace   #232729 #FDF6E3 #E5201D
+        focused_workspace  #a093c7 #a093c7 #161821
+        active_workspace   #89b8c2 #89b8c2 #161821
+        inactive_workspace #91acd1 #91acd1 #161821
+        binding_mode       #e2a478 #e2a478 #161821
+        urgent_workspace   #e27878 #e27878 #CB4B16
     }
     height 18
 }
@@ -285,6 +268,7 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 #for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="(?i)qemu.*"] floating enable
 for_window [class="Xfburn"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="steamwebhelper"] floating enable
@@ -461,7 +445,7 @@ exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -p' &
 
 # Composition Manager (Transparency)
 #exec --no-startup-id xcompmgr -c -f -n
-exec --no-startup-id compton --config ~/.config/compton.conf &
+#exec --no-startup-id compton --config ~/.config/compton.conf &
 
 # Network Keyboard/Mouse/Clipboard
 #exec --no-startup-id synergy &
