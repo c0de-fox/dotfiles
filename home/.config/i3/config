@@ -239,7 +239,7 @@ bar {
 #                      	   border  backgr. text
         focused_workspace  #a093c7 #a093c7 #161821
         active_workspace   #89b8c2 #89b8c2 #161821
-        inactive_workspace #91acd1 #91acd1 #161821
+        inactive_workspace #6b7089 #6b7089 #161821
         binding_mode       #e2a478 #e2a478 #161821
         urgent_workspace   #e27878 #e27878 #CB4B16
     }
