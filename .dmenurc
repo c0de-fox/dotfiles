@@ -1,6 +1,4 @@
-#
-# ~/.dmenurc
-#
+# Configuration for D-Menu (I use rofi mostly, this is usually forgotten about)
 
 ## define the font for dmenu to be used
 DMENU_FN="Source Code Pro Semibold 10.5"
