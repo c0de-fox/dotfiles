@@ -1,21 +1,27 @@
 [global_config]
-  title_transmit_bg_color = "#243433"
-  inactive_color_offset = 0.84347826087
+  title_transmit_fg_color = "#c6c8d1"
+  title_transmit_bg_color = "#161821"
+  title_inactive_fg_color = "#c6c8d1"
+  title_inactive_bg_color = "#6b7089"
   enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
-[keybindings]
+
 [profiles]
   [[default]]
-    background_darkness = 0.77
-    background_type = transparent
-    cursor_color = "#aaaaaa"
+    palette = "#161821:#e27878:#b4be82:#e2a478:#84a0c6:#a093c7:#89b8c2:#c6c8d1:#6b7089:#e98989:#c0ca8e:#e9b189:#91acd1:#ada0d3:#95c4ce:#d2d4de"
+    foreground_color = "#c6c8d1"
+    background_color = "#161821"
+    cursor_color = "#c6c8d1"
+    #background_darkness = 0.77
+    #background_type = transparent
     scrollback_infinite = True
+
 [layouts]
   [[default]]
     [[[child1]]]
+      type = Terminal
       parent = window0
       profile = default
-      type = Terminal
     [[[window0]]]
-      parent = ""
       type = Window
+      parent = ""
 [plugins]
