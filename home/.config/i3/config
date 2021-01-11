@@ -62,11 +62,11 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-client.focused          #a093c7 #a093c7 #c6c8d1 #b4be82
-client.focused_inactive #ada0d3 #ada0d3 #c6c8d1 #e2a478
-client.unfocused        #6b7089 #6b7089 #c6c8d1 #84a0c6
+client.focused          #89b8c2 #89b8c2 #161821 #b4be82
+client.focused_inactive #a093c7 #a093c7 #161821 #e2a478
+client.unfocused        #6b7089 #6b7089 #161821 #84a0c6
 client.urgent           #e27878 #e27878 #CB4B16 #CB4B16
-client.placeholder      #89b8c2 #89b8c2 #c6c8d1 #95c4ce
+client.placeholder      #e2a478 #e2a478 #161821 #95c4ce
 client.background       #161821
 
 # End base configuration
