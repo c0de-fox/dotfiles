@@ -1,7 +1,7 @@
-# Include our shared shell stuff
-source ~/dotfiles/home/shell/env
-source ~/dotfiles/home/shell/aliases
-source ~/dotfiles/home/shell/functions
+# Include our shared environment stuff
+source ~/.environment
+source ~/.aliases
+source ~/.functions
 
 # History Settings
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd..:replay"

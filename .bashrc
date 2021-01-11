@@ -1,7 +1,7 @@
 # Include our shared environment stuff
-source ~/dotfiles/home/shell/env
-source ~/dotfiles/home/shell/aliases
-source ~/dotfiles/home/shell/functions
+source ~/.environment
+source ~/.aliases
+source ~/.functions
 
 # Basic options
 export HISTCONTROL=ignoredups
@@ -78,7 +78,7 @@ WHITE='\[\033[1;37m\]'
 
 RBG='\e[41m'
 ALERT=${WHITE}${RBG} # Bold White on red background
-NC="\e[m"               # Color Reset
+NC="\e[m"            # Color Reset
 
 PS1="\[\033]0;Bash | \u@\H:\w\007\]" # Add a dynamically changing window title - Shows current user@host:current directory (comment this and "$PS1" at beginning of next line when not an a terminal emulator)
 PS1="$PS1""${LGREEN}[${LPURPLE}\u${WHITE}@${LBLUE}\h${LGREEN}]-(${YELLOW}\w${LGREEN})"
