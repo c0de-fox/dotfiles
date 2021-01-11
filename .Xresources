@@ -36,10 +36,10 @@
 *.color15:      #d2d4de
 
 URxvt.font: xft:Source Code Pro:size=10.5
-URxvt.depth:                      32
-URxvt*scrollBar:                  false
-URxvt*mouseWheelScrollPage:       true
-URxvt*cursorBlink:                true
-URxvt*saveLines:                  99999
+URxvt.depth: 32
+URxvt*scrollBar: false
+URxvt*mouseWheelScrollPage: true
+URxvt*cursorBlink: true
+URxvt*saveLines: 99999
 URxvt*internalBorder: 5
 URxvt*geometry: 70x19
