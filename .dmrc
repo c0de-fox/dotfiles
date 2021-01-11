@@ -1,0 +1,4 @@
+# LightDM configuration
+
+[Desktop]
+Session=i3
