@@ -3,15 +3,24 @@
 # This ensures that the entire script is downloaded before execution
 {
 
-# Change this url to point to your repo if you made customizations
-repourl="git://github.com/alopexc0de/dotfiles.git"
+if ! which git >>/dev/null ; then
+  echo "Error: git is not installed"
+  exit 1
+fi
 
 # Exit the script if any errors are encountered
 #set -e
 
-DOT_DIR=$HOME/dotfiles
-bindir=$HOME/bin
-postinst=$HOME/.dotfiles.postinst
+# Change this url to point to your repo if you made customizations
+GIT_REPO="git://github.com/alopexc0de/dotfiles.git"
+
+DOTFILES=${HOME}/dotfiles
+POSTINSTALL_SCRIPT=${HOME}/.dotfiles.postinst
+
+if [ ! -e "${POSTINSTALL_SCRIPT}" ]; then
+    echo "No post install script found."
+    echo "Optionally create one at ${POSTINSTALL_SCRIPT} and rerun this script"
+fi
 
 # Attempts to safely install the configs as symlinks (backing up existing ones)
 function symlink() {
@@ -39,81 +48,79 @@ function symlink() {
 
 read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 
-if ! which git >>/dev/null ; then
-  echo "Error: git is not installed"
-  exit 1
-fi
-
 # If the update script exists, try to do a normal update
-if [ -x "$DOT_DIR/internal_bin/check_for_upgrade.sh" ]; then
-    source "$DOT_DIR/shell/env"
-    env _DOTFILES=$DOT_DIR DISABLE_UPDATE_PROMPT='FALSE' zsh -f $DOT_DIR/internal_bin/check_for_upgrade.sh
+if [ -x "${DOTFILES}/check_for_upgrade.sh" ]; then
+    source "${DOTFILES}/.environment"
+    env DOTFILES=${DOTFILES} DISABLE_UPDATE_PROMPT='FALSE' zsh -f "${DOTFILES}/check_for_upgrade.sh"
 else
-    echo "Cloning dotfiles to $DOT_DIR"
-    rm -rf "${DOT_DIR}"
-    git clone --depth=1 $repourl $DOT_DIR
+    echo "Cloning dotfiles to ${DOTFILES}"
+    rm -rf "${DOTFILES}"
+    git clone --depth=1 --recurse-submodules -j$(nproc) "${GIT_REPO}" "${DOTFILES}"
 fi
-
-# Start installing config
-
-echo "Linking config and local files"
-# Environment
-symlink $DOT_DIR/home/.local $HOME/.local
-symlink $DOT_DIR/home/.config $HOME/.config
 
 echo "Installing Oh-My-ZSH"
 echo "When the install is done, type \"exit\" to continue installing dotfiles"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+echo "Changing default shell to ZSH..."
+chsh -s /usr/bin/zsh
+
 echo "Building i3 configuration"
-$DOT_DIR/bin/build-i3-config
+${DOTFILES}/bin/build-i3-config
 
-echo "Linking X-Session files"
-# Stuff related to the X-Session
-symlink $DOT_DIR/home/.config/compton.conf $HOME/.compton.conf
-symlink $DOT_DIR/home/Xresources $HOME/.Xresources
-symlink $DOT_DIR/home/xinitrc $HOME/.xinitrc
+echo "Installing user binary directory to ~/bin"
+symlink ${DOTFILES}/bin ${HOME}/bin
 
-echo "Linking shell files"
-# Shell stuff
-symlink $DOT_DIR/home/shell/tmux.conf $HOME/.tmux.conf
-symlink $DOT_DIR/home/shell/bashrc $HOME/.bashrc
-symlink $DOT_DIR/home/shell/zshrc $HOME/.zshrc
-symlink $DOT_DIR/home/shell/vimrc $HOME/.vimrc
-symlink $DOT_DIR/home/dmenurc $HOME/.dmenurc
-symlink $DOT_DIR/home/dmrc $HOME/.dmrc
+echo "Linking Configuration files..."
 
-# Global git
-symlink $DOT_DIR/home/gitconfig $HOME/.gitconfig
+# All the dotfiles that live in the home dir directly
+symlink ${DOTFILES}/.aliases                 ${HOME}/.aliases
+symlink ${DOTFILES}/.bashrc                  ${HOME}/.bashrc
+symlink ${DOTFILES}/.dmenurc                 ${HOME}/.dmenurc
+symlink ${DOTFILES}/.dmrc                    ${HOME}/.dmrc
+symlink ${DOTFILES}/.editorconfig            ${HOME}/.editorconfig
+symlink ${DOTFILES}/.environment             ${HOME}/.environment
+symlink ${DOTFILES}/.functions               ${HOME}/.functions
+symlink ${DOTFILES}/.gitconfig               ${HOME}/.gitconfig
+symlink ${DOTFILES}/.stalonetrayrc           ${HOME}/.stalonetrayrc
+symlink ${DOTFILES}/.tmux.conf               ${HOME}/.tmux.conf
+symlink ${DOTFILES}/.vimrc                   ${HOME}/.vimrc
+symlink ${DOTFILES}/.zshrc                   ${HOME}/.zshrc
 
-echo "Installing shell-history"
-python3 -m pip install shellhistory
+# Install ~/.config stuff
+symlink ${DOTFILES}/.config/.rofi            ${HOME}/.config/.rofi
+symlink ${DOTFILES}/.config/compton          ${HOME}/.config/compton
+symlink ${DOTFILES}/.config/dunst            ${HOME}/.config/dunst
+symlink ${DOTFILES}/.config/gtk-2.0          ${HOME}/.config/gtk-2.0
+symlink ${DOTFILES}/.config/gtk-3.0          ${HOME}/.config/gtk-3.0
+symlink ${DOTFILES}/.config/htop             ${HOME}/.config/htop
+symlink ${DOTFILES}/.config/i3               ${HOME}/.config/i3
+symlink ${DOTFILES}/.config/morc_menu        ${HOME}/.config/morc_menu
+symlink ${DOTFILES}/.config/nitrogen         ${HOME}/.config/nitrogen
+symlink ${DOTFILES}/.config/ranger           ${HOME}/.config/ranger
+symlink ${DOTFILES}/.config/terminator       ${HOME}/.config/terminator
+symlink ${DOTFILES}/.config/viewnior         ${HOME}/.config/viewnior
+symlink ${DOTFILES}/.config/volumeicon       ${HOME}/.config/volumeicon
+symlink ${DOTFILES}/.config/mimeapps.list    ${HOME}/.config/mimeapps.list
 
 echo "Installing VIM Pathogen..."
-mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
-curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+mkdir -p ${HOME}/.vim/{autoload,bundle}
+curl -LSs https://tpo.pe/pathogen.vim -o ${HOME}/.vim/autoload/pathogen.vim
 
 echo "Installing VIM Sensible..."
-cd $HOME/.vim/bundle
-git clone git://github.com/tpope/vim-sensible.git
+git clone git://github.com/tpope/vim-sensible.git ${HOME}/.vim/bundle/vim-sensible
 
 echo "Installing VIM Iceberg theme"
 cd /tmp
 wget https://www.vim.org/scripts/download_script.php?src_id=25718 -O iceberg.zip
 unzip iceberg.zip
-cp -r iceberg.vim/{autoload,colors} ~/.vim/
+cp -r iceberg.vim/{autoload,colors} ${HOME}/.vim/
+rm -rf /tmp/iceberg*
+cd ${HOME}
 
-echo "Adding user bin..."
-symlink $DOT_DIR/bin $HOME/bin
-
-echo "Changing default shell to ZSH..."
-chsh -s /usr/bin/zsh
-
-if [ -e "$postinst" ]; then
+if [ -e "$POSTINSTALL_SCRIPT" ]; then
     echo "Running post install..."
-    source "$postinst"
-else
-    echo "No post install script found. Optionally create one at $postinst and reinstall your dotfies"
+    source "$POSTINSTALL_SCRIPT"
 fi
 
 echo "Install done."
