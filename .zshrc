@@ -14,8 +14,8 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 
-# Say how long a command took, if it took more than 15 seconds
-export REPORTTIME=15
+# Say how long a command took, if it took more than 5 seconds
+export REPORTTIME=5
 
 # Prompts for confirmation after 'rm *' etc
 # Helps avoid mistakes like 'rm * o' when 'rm *.o' was intended
