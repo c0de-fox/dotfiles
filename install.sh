@@ -39,18 +39,6 @@ function symlink() {
 
 read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 
-read -p "[Dotfiles] Would you like to detect distro and auto-install dependencies? [Y/n]: " line
-if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
-    distrourl="https://raw.githubusercontent.com/alopexc0de/dotfiles/master/internal_bin"
-    if [ -f /etc/arch-release ]; then
-        bash <(curl -sL $distrourl/install.arch)
-    elif [ -f /etc/debian_version ]; then
-        bash <(curl -sL $distrourl/install.deb)
-    else
-        echo "This system does not have an auto-install file. Please install the dependencies manually"
-    fi
-fi
-
 if ! which git >>/dev/null ; then
   echo "Error: git is not installed"
   exit 1
