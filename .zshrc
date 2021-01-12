@@ -30,15 +30,6 @@ setopt NOCLOBBER
 # Don’t nice background processes
 setopt NO_BG_NICE
 
-# Makes Alt-s insert a sudo at beginning of prompt
-function insert_sudo {
-    if [[ $BUFFER != "sudo "* ]]; then
-        BUFFER="sudo $BUFFER"; CURSOR+=6
-    fi
-}
-zle -N insert-sudo insert_sudo
-bindkey "^[s" insert-sudo
-
 # Check for updates...
 # Stolen and modified Oh-My-ZSH's update system
 if [ "${ENABLE_DOTFILES_AUTO_UPDATE}" ]; then
