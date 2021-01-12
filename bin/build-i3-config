@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DF_PATH=${HOME}/dotfiles/home/.config/i3
+DF_PATH=${HOME}/dotfiles/.config/i3
 CONFIG_PATH=${DF_PATH}/conf.d
 DST_FILE=${DF_PATH}/config
 
