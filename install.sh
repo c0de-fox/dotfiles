@@ -9,7 +9,7 @@ repourl="git://github.com/alopexc0de/dotfiles.git"
 # Exit the script if any errors are encountered
 #set -e
 
-basedir=$HOME/dotfiles
+DOT_DIR=$HOME/dotfiles
 bindir=$HOME/bin
 postinst=$HOME/.dotfiles.postinst
 
@@ -45,46 +45,46 @@ if ! which git >>/dev/null ; then
 fi
 
 # If the update script exists, try to do a normal update
-if [ -x "$basedir/internal_bin/check_for_upgrade.sh" ]; then
-    source "$basedir/shell/env"
-    env _DOTFILES=$basedir DISABLE_UPDATE_PROMPT='FALSE' zsh -f $basedir/internal_bin/check_for_upgrade.sh
+if [ -x "$DOT_DIR/internal_bin/check_for_upgrade.sh" ]; then
+    source "$DOT_DIR/shell/env"
+    env _DOTFILES=$DOT_DIR DISABLE_UPDATE_PROMPT='FALSE' zsh -f $DOT_DIR/internal_bin/check_for_upgrade.sh
 else
-    echo "Cloning dotfiles to $basedir"
-    rm -rf $basedir
-    git clone --depth=1 $repourl $basedir
+    echo "Cloning dotfiles to $DOT_DIR"
+    rm -rf "${DOT_DIR}"
+    git clone --depth=1 $repourl $DOT_DIR
 fi
 
 # Start installing config
 
 echo "Linking config and local files"
 # Environment
-symlink $basedir/home/.local $HOME/.local
-symlink $basedir/home/.config $HOME/.config
+symlink $DOT_DIR/home/.local $HOME/.local
+symlink $DOT_DIR/home/.config $HOME/.config
 
 echo "Installing Oh-My-ZSH"
 echo "When the install is done, type \"exit\" to continue installing dotfiles"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo "Building i3 configuration"
-$basedir/bin/build-i3-config
+$DOT_DIR/bin/build-i3-config
 
 echo "Linking X-Session files"
 # Stuff related to the X-Session
-symlink $basedir/home/.config/compton.conf $HOME/.compton.conf
-symlink $basedir/home/Xresources $HOME/.Xresources
-symlink $basedir/home/xinitrc $HOME/.xinitrc
+symlink $DOT_DIR/home/.config/compton.conf $HOME/.compton.conf
+symlink $DOT_DIR/home/Xresources $HOME/.Xresources
+symlink $DOT_DIR/home/xinitrc $HOME/.xinitrc
 
 echo "Linking shell files"
 # Shell stuff
-symlink $basedir/home/shell/tmux.conf $HOME/.tmux.conf
-symlink $basedir/home/shell/bashrc $HOME/.bashrc
-symlink $basedir/home/shell/zshrc $HOME/.zshrc
-symlink $basedir/home/shell/vimrc $HOME/.vimrc
-symlink $basedir/home/dmenurc $HOME/.dmenurc
-symlink $basedir/home/dmrc $HOME/.dmrc
+symlink $DOT_DIR/home/shell/tmux.conf $HOME/.tmux.conf
+symlink $DOT_DIR/home/shell/bashrc $HOME/.bashrc
+symlink $DOT_DIR/home/shell/zshrc $HOME/.zshrc
+symlink $DOT_DIR/home/shell/vimrc $HOME/.vimrc
+symlink $DOT_DIR/home/dmenurc $HOME/.dmenurc
+symlink $DOT_DIR/home/dmrc $HOME/.dmrc
 
 # Global git
-symlink $basedir/home/gitconfig $HOME/.gitconfig
+symlink $DOT_DIR/home/gitconfig $HOME/.gitconfig
 
 echo "Installing shell-history"
 python3 -m pip install shellhistory
@@ -104,10 +104,7 @@ unzip iceberg.zip
 cp -r iceberg.vim/{autoload,colors} ~/.vim/
 
 echo "Adding user bin..."
-mkdir -p $bindir
-for file_path in $basedir/bin/*; do
-    symlink $file_path $bindir/$(basename $file_path)
-done
+symlink $DOT_DIR/bin $HOME/bin
 
 echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
@@ -120,7 +117,6 @@ else
 fi
 
 echo "Install done."
-echo "Check tmux, vim, and your shell to verify everything is correct"
-echo "you may need to launch a new instance of your shell"
+echo "Log out and back in again for everything to take effect."
 
 } # Ensures that the whole script is downloaded before execution
