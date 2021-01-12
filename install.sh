@@ -55,7 +55,7 @@ if [ -x "${DOTFILES}/check_for_upgrade.sh" ]; then
 else
     echo "Cloning dotfiles to ${DOTFILES}"
     rm -rf "${DOTFILES}"
-    git clone --depth=1 --recurse-submodules -j$(nproc) "${GIT_REPO}" "${DOTFILES}"
+    git clone --recurse-submodules -j$(nproc) "${GIT_REPO}" "${DOTFILES}"
 fi
 
 echo "Installing Oh-My-ZSH"
