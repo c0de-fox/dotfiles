@@ -51,7 +51,7 @@ read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 # If the update script exists, try to do a normal update
 if [ -x "${DOTFILES}/check_for_upgrade.sh" ]; then
     source "${DOTFILES}/.environment"
-    env DOTFILES=${DOTFILES} DISABLE_UPDATE_PROMPT='FALSE' zsh -f "${DOTFILES}/check_for_upgrade.sh"
+    env DOTFILES=${DOTFILES} DISABLE_UPDATE_PROMPT=false zsh -f ${DOTFILES}/check_for_upgrade.sh
 else
     echo "Cloning dotfiles to ${DOTFILES}"
     rm -rf "${DOTFILES}"

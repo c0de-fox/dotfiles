@@ -41,8 +41,8 @@ bindkey "^[s" insert-sudo
 
 # Check for updates...
 # Stolen and modified Oh-My-ZSH's update system
-if [ "$DISABLE_DOTFILES_AUTO_UPDATE" != "true" ]; then
-  env ZSH=$ZSH _DOTFILES=$_DOTFILES DISABLE_UPDATE_PROMPT=$DISABLE_DOTFILES_UPDATE_PROMPT zsh -f $_DOTFILES/internal_bin/check_for_upgrade.sh
+if [ "${ENABLE_DOTFILES_AUTO_UPDATE}" ]; then
+  env ZSH=$ZSH _DOTFILES=$_DOTFILES DISABLE_UPDATE_PROMPT=$DISABLE_DOTFILES_UPDATE_PROMPT zsh -f $_DOTFILES/check_for_upgrade.sh
 fi
 
 # Oh-My-ZSH Options below this line

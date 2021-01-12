@@ -10,15 +10,14 @@ function _current_epoch() {
   echo $(( $EPOCHSECONDS / 60 / 60 / 24 ))
 }
 
-function _update_dotfiles_update() {
+function _touch_dotfiles_update() {
   echo "export LAST_EPOCH=$(_current_epoch)" > ${HOME}/.dotfiles-update
   echo "touched ~/.dotfiles-update"
 }
 
 function _upgrade_dotfiles() {
-  env _DOTFILES=$_DOTFILES sh $_DOTFILES/internal_bin/upgrade.sh
-  # update the zsh file
-  _update_dotfiles_update
+  env _DOTFILES=$_DOTFILES sh $_DOTFILES/upgrade.sh
+  _touch_dotfiles_update
 }
 
 # Configure this in shell/env
@@ -49,12 +48,12 @@ if mkdir -p "$_DOTFILES/update.lock" 2>/dev/null; then
 
     if [[ -z "$LAST_EPOCH" ]]; then
       echo "Missing \$LAST_EPOCH"
-      _update_dotfiles_update && return 0;
+      _touch_dotfiles_update && return 0;
     fi
 
     epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
     if [ $epoch_diff -gt $epoch_target ]; then
-      if [ "$DISABLE_UPDATE_PROMPT" = "true" ]; then
+      if [ "${DISABLE_UPDATE_PROMPT}" ]; then
         _upgrade_dotfiles
       else
         echo "[Dotfiles] Would you like to check for updates? [Y/n]: \c"
@@ -62,14 +61,14 @@ if mkdir -p "$_DOTFILES/update.lock" 2>/dev/null; then
         if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
           _upgrade_dotfiles
         else
-          _update_dotfiles_update
+          _touch_dotfiles_update
         fi
       fi
     fi
   else
     echo "Missing ~/.dotfiles-update"
     # create the zsh file
-    _update_dotfiles_update
+    _touch_dotfiles_update
   fi
 
   rmdir $_DOTFILES/update.lock
