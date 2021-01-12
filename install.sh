@@ -27,23 +27,23 @@ function symlink() {
     src=$1
     dest=$2
 
-    if [ -e $dest ]; then
-        if [ -L $dest ]; then
+    if [ -e "${dest}" ]; then
+        if [ -L "${dest}" ]; then
             # Already symlinked -- I'll assume correctly.
             return
         else
             # Rename files with a ".old" extension.
-            echo "$dest already exists, renaming to $dest.old"
-            backup=$dest.old
-            if [ -e $backup ]; then
+            echo "${dest} already exists, renaming to ${dest}.old"
+            backup="${dest}.old"
+            if [ -e "${backup}" ]; then
                 echo "Error: $backup already exists. Please delete or rename it."
                 exit 1
             fi
-            mv -v $dest $backup
+            mv -v "${dest}" "${backup}"
         fi
     fi
-    echo "Linking $(basename $src)..."
-    ln -sf $src $dest
+    echo "Linking $(basename "${src}")..."
+    ln -sf "${src}" "${dest}"
 }
 
 read -p "Press enter to install dotfiles " WAIT_FOR_INPUT
