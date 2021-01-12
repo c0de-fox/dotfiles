@@ -50,8 +50,8 @@ read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
 
 # If the update script exists, try to do a normal update
 if [ -x "${DOTFILES}/check_for_upgrade.sh" ]; then
-    source "${DOTFILES}/.environment"
-    env DOTFILES=${DOTFILES} DISABLE_UPDATE_PROMPT=false zsh -f ${DOTFILES}/check_for_upgrade.sh
+    source "${DOTFILES}/shell/.environment"
+    env DOTFILES="${DOTFILES}" DISABLE_UPDATE_PROMPT=false zsh -f "${DOTFILES}/check_for_upgrade.sh"
 else
     echo "Cloning dotfiles to ${DOTFILES}"
     rm -rf "${DOTFILES}"
@@ -66,61 +66,61 @@ echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
 
 echo "Building i3 configuration"
-${DOTFILES}/bin/build-i3-config
+"${DOTFILES}/bin/build-i3-config"
 
 echo "Installing user binary directory to ~/bin"
-symlink ${DOTFILES}/bin ${HOME}/bin
+symlink "${DOTFILES}/bin" "${HOME}/bin"
 
 echo "Linking Configuration files..."
 
 # All the dotfiles that live in the home dir directly
-symlink ${DOTFILES}/.aliases                 ${HOME}/.aliases
-symlink ${DOTFILES}/.bashrc                  ${HOME}/.bashrc
-symlink ${DOTFILES}/.dmenurc                 ${HOME}/.dmenurc
-symlink ${DOTFILES}/.dmrc                    ${HOME}/.dmrc
-symlink ${DOTFILES}/.editorconfig            ${HOME}/.editorconfig
-symlink ${DOTFILES}/.environment             ${HOME}/.environment
-symlink ${DOTFILES}/.functions               ${HOME}/.functions
-symlink ${DOTFILES}/.gitconfig               ${HOME}/.gitconfig
-symlink ${DOTFILES}/.stalonetrayrc           ${HOME}/.stalonetrayrc
-symlink ${DOTFILES}/.tmux.conf               ${HOME}/.tmux.conf
-symlink ${DOTFILES}/.vimrc                   ${HOME}/.vimrc
-symlink ${DOTFILES}/.zshrc                   ${HOME}/.zshrc
+symlink "${DOTFILES}/shell/.aliases"          "${HOME}/.aliases"
+symlink "${DOTFILES}/shell/.bashrc"           "${HOME}/.bashrc"
+symlink "${DOTFILES}/shell/.dmenurc"          "${HOME}/.dmenurc"
+symlink "${DOTFILES}/shell/.dmrc"             "${HOME}/.dmrc"
+symlink "${DOTFILES}/shell/.editorconfig"     "${HOME}/.editorconfig"
+symlink "${DOTFILES}/shell/.environment"      "${HOME}/.environment"
+symlink "${DOTFILES}/shell/.functions"        "${HOME}/.functions"
+symlink "${DOTFILES}/shell/.gitconfig"        "${HOME}/.gitconfig"
+symlink "${DOTFILES}/shell/.stalonetrayrc"    "${HOME}/.stalonetrayrc"
+symlink "${DOTFILES}/shell/.tmux.conf"        "${HOME}/.tmux.conf"
+symlink "${DOTFILES}/shell/.vimrc"            "${HOME}/.vimrc"
+symlink "${DOTFILES}/shell/.zshrc"            "${HOME}/.zshrc"
 
 # Install ~/.config stuff
-symlink ${DOTFILES}/.config/.rofi            ${HOME}/.config/.rofi
-symlink ${DOTFILES}/.config/compton          ${HOME}/.config/compton
-symlink ${DOTFILES}/.config/dunst            ${HOME}/.config/dunst
-symlink ${DOTFILES}/.config/gtk-2.0          ${HOME}/.config/gtk-2.0
-symlink ${DOTFILES}/.config/gtk-3.0          ${HOME}/.config/gtk-3.0
-symlink ${DOTFILES}/.config/htop             ${HOME}/.config/htop
-symlink ${DOTFILES}/.config/i3               ${HOME}/.config/i3
-symlink ${DOTFILES}/.config/morc_menu        ${HOME}/.config/morc_menu
-symlink ${DOTFILES}/.config/nitrogen         ${HOME}/.config/nitrogen
-symlink ${DOTFILES}/.config/ranger           ${HOME}/.config/ranger
-symlink ${DOTFILES}/.config/terminator       ${HOME}/.config/terminator
-symlink ${DOTFILES}/.config/viewnior         ${HOME}/.config/viewnior
-symlink ${DOTFILES}/.config/volumeicon       ${HOME}/.config/volumeicon
-symlink ${DOTFILES}/.config/mimeapps.list    ${HOME}/.config/mimeapps.list
+symlink "${DOTFILES}/.config/.rofi"           "${HOME}/.config/.rofi"
+symlink "${DOTFILES}/.config/compton"         "${HOME}/.config/compton"
+symlink "${DOTFILES}/.config/dunst"           "${HOME}/.config/dunst"
+symlink "${DOTFILES}/.config/gtk-2.0"         "${HOME}/.config/gtk-2.0"
+symlink "${DOTFILES}/.config/gtk-3.0"         "${HOME}/.config/gtk-3.0"
+symlink "${DOTFILES}/.config/htop"            "${HOME}/.config/htop"
+symlink "${DOTFILES}/.config/i3"              "${HOME}/.config/i3"
+symlink "${DOTFILES}/.config/morc_menu"       "${HOME}/.config/morc_menu"
+symlink "${DOTFILES}/.config/nitrogen"        "${HOME}/.config/nitrogen"
+symlink "${DOTFILES}/.config/terminator"      "${HOME}/.config/terminator"
+symlink "${DOTFILES}/.config/ranger"          "${HOME}/.config/ranger"
+symlink "${DOTFILES}/.config/viewnior"        "${HOME}/.config/viewnior"
+symlink "${DOTFILES}/.config/volumeicon"      "${HOME}/.config/volumeicon"
+symlink "${DOTFILES}/.config/mimeapps.list"   "${HOME}/.config/mimeapps.list"
 
 echo "Installing VIM Pathogen..."
-mkdir -p ${HOME}/.vim/{autoload,bundle}
-curl -LSs https://tpo.pe/pathogen.vim -o ${HOME}/.vim/autoload/pathogen.vim
+mkdir -p "${HOME}/.vim/{autoload,bundle}"
+curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
 
 echo "Installing VIM Sensible..."
-git clone git://github.com/tpope/vim-sensible.git ${HOME}/.vim/bundle/vim-sensible
+git clone git://github.com/tpope/vim-sensible.git "${HOME}/.vim/bundle/vim-sensible"
 
 echo "Installing VIM Iceberg theme"
 cd /tmp
 wget https://www.vim.org/scripts/download_script.php?src_id=25718 -O iceberg.zip
 unzip iceberg.zip
-cp -r iceberg.vim/{autoload,colors} ${HOME}/.vim/
+cp -r iceberg.vim/{autoload,colors} "${HOME}/.vim/"
 rm -rf /tmp/iceberg*
-cd ${HOME}
+cd "${HOME}"
 
-if [ -e "$POSTINSTALL_SCRIPT" ]; then
+if [ -e "${POSTINSTALL_SCRIPT}" ]; then
     echo "Running post install..."
-    source "$POSTINSTALL_SCRIPT"
+    "${POSTINSTALL_SCRIPT}"
 fi
 
 echo "Install done."
