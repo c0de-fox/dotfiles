@@ -46,27 +46,17 @@ function symlink() {
     ln -sf $src $dest
 }
 
-read -p "Press enter to install my dotfiles " WAIT_FOR_INPUT
+read -p "Press enter to install dotfiles " WAIT_FOR_INPUT
 
 # If the update script exists, try to do a normal update
 if [ -x "${DOTFILES}/check_for_upgrade.sh" ]; then
     source "${DOTFILES}/shell/.environment"
     env DOTFILES="${DOTFILES}" DISABLE_UPDATE_PROMPT=false zsh -f "${DOTFILES}/check_for_upgrade.sh"
 else
-    echo "Cloning dotfiles to ${DOTFILES}"
+    echo "Cloning to ${DOTFILES}"
     rm -rf "${DOTFILES}"
     git clone --recurse-submodules -j$(nproc) "${GIT_REPO}" "${DOTFILES}"
 fi
-
-echo "Installing Oh-My-ZSH"
-echo "When the install is done, type \"exit\" to continue installing dotfiles"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-echo "Changing default shell to ZSH..."
-chsh -s /usr/bin/zsh
-
-echo "Building i3 configuration"
-"${DOTFILES}/bin/build-i3-config"
 
 echo "Installing user binary directory to ~/bin"
 symlink "${DOTFILES}/bin" "${HOME}/bin"
@@ -103,6 +93,15 @@ symlink "${DOTFILES}/.config/viewnior"        "${HOME}/.config/viewnior"
 symlink "${DOTFILES}/.config/volumeicon"      "${HOME}/.config/volumeicon"
 symlink "${DOTFILES}/.config/mimeapps.list"   "${HOME}/.config/mimeapps.list"
 
+echo "Building i3 configuration..."
+"${DOTFILES}/bin/build-i3-config"
+
+echo "Changing default shell to ZSH..."
+chsh -s /usr/bin/zsh
+
+echo "Installing Oh-My-ZSH..."
+CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 echo "Installing VIM Pathogen..."
 mkdir -p "${HOME}/.vim/{autoload,bundle}"
 curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
@@ -110,7 +109,7 @@ curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
 echo "Installing VIM Sensible..."
 git clone git://github.com/tpope/vim-sensible.git "${HOME}/.vim/bundle/vim-sensible"
 
-echo "Installing VIM Iceberg theme"
+echo "Installing VIM Iceberg theme..."
 cd /tmp
 wget https://www.vim.org/scripts/download_script.php?src_id=25718 -O iceberg.zip
 unzip iceberg.zip
