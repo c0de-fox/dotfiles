@@ -15,6 +15,8 @@ fi
 GIT_REPO="git://github.com/alopexc0de/dotfiles.git"
 
 DOTFILES=${HOME}/dotfiles
+DF_HOME=${DOTFILES}/home
+DF_CONFIG=${DF_HOME}/.config
 POSTINSTALL_SCRIPT=${HOME}/.dotfiles.postinst
 
 if [ ! -e "${POSTINSTALL_SCRIPT}" ]; then
@@ -50,8 +52,8 @@ read -p "Press enter to install dotfiles " WAIT_FOR_INPUT
 
 # If the update script exists, try to do a normal update
 if [ -x "${DOTFILES}/check_for_upgrade.sh" ]; then
-    source "${DOTFILES}/shell/.environment"
-    env DOTFILES="${DOTFILES}" DISABLE_UPDATE_PROMPT=false zsh -f "${DOTFILES}/check_for_upgrade.sh"
+    source "${DF_HOME}/.environment"
+    env _DOTFILES="${DOTFILES}" DISABLE_UPDATE_PROMPT=false zsh -f "${DOTFILES}/check_for_upgrade.sh"
 else
     echo "Cloning to ${DOTFILES}"
     rm -rf "${DOTFILES}"
@@ -59,42 +61,42 @@ else
 fi
 
 echo "Installing user binary directory to ~/bin"
-symlink "${DOTFILES}/bin" "${HOME}/bin"
+symlink "${DF_HOME}/bin" "${HOME}/bin"
 
 echo "Linking Configuration files..."
 
 # All the dotfiles that live in the home dir directly
-symlink "${DOTFILES}/shell/.aliases"          "${HOME}/.aliases"
-symlink "${DOTFILES}/shell/.bashrc"           "${HOME}/.bashrc"
-symlink "${DOTFILES}/shell/.dmenurc"          "${HOME}/.dmenurc"
-symlink "${DOTFILES}/shell/.dmrc"             "${HOME}/.dmrc"
-symlink "${DOTFILES}/shell/.editorconfig"     "${HOME}/.editorconfig"
-symlink "${DOTFILES}/shell/.environment"      "${HOME}/.environment"
-symlink "${DOTFILES}/shell/.functions"        "${HOME}/.functions"
-symlink "${DOTFILES}/shell/.gitconfig"        "${HOME}/.gitconfig"
-symlink "${DOTFILES}/shell/.stalonetrayrc"    "${HOME}/.stalonetrayrc"
-symlink "${DOTFILES}/shell/.tmux.conf"        "${HOME}/.tmux.conf"
-symlink "${DOTFILES}/shell/.vimrc"            "${HOME}/.vimrc"
-symlink "${DOTFILES}/shell/.zshrc"            "${HOME}/.zshrc"
+symlink "${DOTFILES}/.editorconfig"     "${HOME}/.editorconfig"
+symlink "${DF_HOME}/.aliases"           "${HOME}/.aliases"
+symlink "${DF_HOME}/.bashrc"            "${HOME}/.bashrc"
+symlink "${DF_HOME}/.dmenurc"           "${HOME}/.dmenurc"
+symlink "${DF_HOME}/.dmrc"              "${HOME}/.dmrc"
+symlink "${DF_HOME}/.environment"       "${HOME}/.environment"
+symlink "${DF_HOME}/.functions"         "${HOME}/.functions"
+symlink "${DF_HOME}/.gitconfig"         "${HOME}/.gitconfig"
+symlink "${DF_HOME}/.stalonetrayrc"     "${HOME}/.stalonetrayrc"
+symlink "${DF_HOME}/.tmux.conf"         "${HOME}/.tmux.conf"
+symlink "${DF_HOME}/.vimrc"             "${HOME}/.vimrc"
+symlink "${DF_HOME}/.zshrc"             "${HOME}/.zshrc"
 
 # Install ~/.config stuff
-symlink "${DOTFILES}/.config/.rofi"           "${HOME}/.config/.rofi"
-symlink "${DOTFILES}/.config/compton"         "${HOME}/.config/compton"
-symlink "${DOTFILES}/.config/dunst"           "${HOME}/.config/dunst"
-symlink "${DOTFILES}/.config/gtk-2.0"         "${HOME}/.config/gtk-2.0"
-symlink "${DOTFILES}/.config/gtk-3.0"         "${HOME}/.config/gtk-3.0"
-symlink "${DOTFILES}/.config/htop"            "${HOME}/.config/htop"
-symlink "${DOTFILES}/.config/i3"              "${HOME}/.config/i3"
-symlink "${DOTFILES}/.config/morc_menu"       "${HOME}/.config/morc_menu"
-symlink "${DOTFILES}/.config/nitrogen"        "${HOME}/.config/nitrogen"
-symlink "${DOTFILES}/.config/terminator"      "${HOME}/.config/terminator"
-symlink "${DOTFILES}/.config/ranger"          "${HOME}/.config/ranger"
-symlink "${DOTFILES}/.config/viewnior"        "${HOME}/.config/viewnior"
-symlink "${DOTFILES}/.config/volumeicon"      "${HOME}/.config/volumeicon"
-symlink "${DOTFILES}/.config/mimeapps.list"   "${HOME}/.config/mimeapps.list"
+symlink "${DF_CONFIG}/.rofi"            "${HOME}/.config/.rofi"
+symlink "${DF_CONFIG}/compton"          "${HOME}/.config/compton"
+symlink "${DF_CONFIG}/dunst"            "${HOME}/.config/dunst"
+symlink "${DF_CONFIG}/gtk-2.0"          "${HOME}/.config/gtk-2.0"
+symlink "${DF_CONFIG}/gtk-3.0"          "${HOME}/.config/gtk-3.0"
+symlink "${DF_CONFIG}/htop"             "${HOME}/.config/htop"
+symlink "${DF_CONFIG}/i3"               "${HOME}/.config/i3"
+symlink "${DF_CONFIG}/morc_menu"        "${HOME}/.config/morc_menu"
+symlink "${DF_CONFIG}/nitrogen"         "${HOME}/.config/nitrogen"
+symlink "${DF_CONFIG}/terminator"       "${HOME}/.config/terminator"
+symlink "${DF_CONFIG}/ranger"           "${HOME}/.config/ranger"
+symlink "${DF_CONFIG}/viewnior"         "${HOME}/.config/viewnior"
+symlink "${DF_CONFIG}/volumeicon"       "${HOME}/.config/volumeicon"
+symlink "${DF_CONFIG}/mimeapps.list"    "${HOME}/.config/mimeapps.list"
 
 echo "Building i3 configuration..."
-"${DOTFILES}/bin/build-i3-config"
+"${DF_HOME}/bin/build-i3-config"
 
 echo "Changing default shell to ZSH..."
 chsh -s /usr/bin/zsh
