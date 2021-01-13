@@ -38,8 +38,8 @@
 [mergetool "fugitive"]
 	cmd = fugitive vim -f -c \"Gdiff\" \"$MERGED\"
 [user]
-	email = dtodd@oceantech.com
-	name = David Todd
+	email = c0de@c0de.dev
+	name = c0de
 [include]
 	path = ~/.githubtokens
 	path = ~/.dotoverrides/gitconfig
