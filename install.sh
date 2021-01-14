@@ -104,6 +104,9 @@ chsh -s /usr/bin/zsh
 echo "Installing Oh-My-ZSH..."
 CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+echo "Installing VSCode Extensions..."
+cat "${DOTFILES}/vs_code_extensions.lst" | xargs -n 1 code --install-extension --force
+
 echo "Installing VIM Pathogen..."
 mkdir -p "${HOME}/.vim/{autoload,bundle}"
 curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
