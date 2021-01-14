@@ -1,0 +1,16 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "files.autoSaveDelay": 750,
+    "editor.renderWhitespace": "all",
+    "window.menuBarVisibility": "toggle",
+    "files.autoSave": "afterDelay",
+    "python.languageServer": "Pylance",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Iceberg",
+    "sync.quietSync": true,
+    "sync.autoUpload": true,
+    "sync.autoDownload": true,
+    "sync.gist": "b4580c595539ccca8bc2bb18ad104cef"
+}
