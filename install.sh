@@ -63,6 +63,10 @@ fi
 echo "Installing user binary directory to ~/bin"
 symlink "${DF_HOME}/bin" "${HOME}/bin"
 
+echo "Creating needed directories"
+mkdir -p "${HOME}/.tmux"
+mkdir -p "${HOME}/.vim/{autoload,bundle}"
+
 echo "Linking Configuration files..."
 
 # All the dotfiles that live in the home dir directly
@@ -76,6 +80,7 @@ symlink "${DF_HOME}/.functions"                 "${HOME}/.functions"
 symlink "${DF_HOME}/.gitconfig"                 "${HOME}/.gitconfig"
 symlink "${DF_HOME}/.stalonetrayrc"             "${HOME}/.stalonetrayrc"
 symlink "${DF_HOME}/.tmux.conf"                 "${HOME}/.tmux.conf"
+symlink "${DF_HOME}/.tmux/iceberg.tmux.conf"    "${HOME}/.tmux/iceberg.tmux.conf"
 symlink "${DF_HOME}/.vimrc"                     "${HOME}/.vimrc"
 symlink "${DF_HOME}/.zshrc"                     "${HOME}/.zshrc"
 
@@ -113,7 +118,6 @@ CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.co
 #cat "${DOTFILES}/vs_code_extensions.lst" | xargs -n 1 code --install-extension --force
 
 echo "Installing VIM Pathogen..."
-mkdir -p "${HOME}/.vim/{autoload,bundle}"
 curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
 
 echo "Installing VIM Sensible..."
