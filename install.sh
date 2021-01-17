@@ -102,8 +102,8 @@ symlink "${DF_CONFIG}/mimeapps.list"            "${HOME}/.config/mimeapps.list"
 symlink "${DF_CONFIG}/Code/User/settings.json"  "${HOME}/.config/Code/User/settings.json"
 
 echo "Installing Iceberg GTK theme and Icon pack..."
-symlink "${DOTFILES}/.themes/oomox-iceberg" "${HOME}/.themes/oomox-iceberg"
-symlink "${DOTFILES}/.icons/oomox-iceberg"  "${HOME}/.icons/oomox-iceberg"
+symlink "${DF_HOME}/.themes/oomox-iceberg" "${HOME}/.themes/oomox-iceberg"
+symlink "${DF_HOME}/.icons/oomox-iceberg"  "${HOME}/.icons/oomox-iceberg"
 
 echo "Building i3 configuration..."
 "${DF_HOME}/bin/build-i3-config"
