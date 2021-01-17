@@ -193,8 +193,17 @@ assign [class="^Code"] $ws5
 # Begin i3-bar configuration
 
 bar {
-    #status_command i3status -c ~/.config/i3/i3status.conf
+    position top
+    height 18
+    tray_padding 0
+    #mode hide
+    #workspace_buttons yes
+    #tray_output DP-0
+    #separator_symbol "|"
+
     status_command i3blocks -c $i3_path/i3blocks.conf
+
+#    status_command i3status -c $i3_path/i3status.conf
 #    status_command bumblebee-status \
 #        -m \
 #            disk:root \
@@ -224,26 +233,18 @@ bar {
 #            iceberg-dark-powerline
 #
 
-    position top
-    #mode hide
-    #workspace_buttons yes
-    #tray_output DP-0
-    tray_padding 0
-    #separator_symbol "|"
-
     colors {
         background #161821
         statusline #c6c8d1
         separator  #161821
 
-#                      	   border  backgr. text
+#                          border  backgr. text
         focused_workspace  #89b8c2 #89b8c2 #161821
         active_workspace   #a093c7 #a093c7 #161821
         inactive_workspace #6b7089 #6b7089 #c6c8d1
         binding_mode       #e2a478 #e2a478 #161821
         urgent_workspace   #e27878 #e27878 #CB4B16
     }
-    height 18
 }
 
 # End i3-bar configuration
@@ -378,7 +379,7 @@ mode "resize" {
 # Frequently used programs
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+Return exec --no-startup-id urxvt
-bindsym $mod+F2 exec --no-startup-id google-chrome-stable
+bindsym $mod+F2 exec --no-startup-id firefox
 bindsym $mod+F3 exec --no-startup-id pcmanfm
 bindsym $mod+F4 exec --no-startup-id code
 bindsym $mod+F6 exec --no-startup-id ~/bin/music_player
@@ -390,12 +391,6 @@ bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+z exec --no-startup-id morc_menu
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-
-# Configuration Editor
-bindsym $mod+Ctrl+b exec --no-startup-id urxvt -e bmenu
-
-# File Explorer
-bindsym $mod+n --release exec --no-startup-id urxvt -e nnn
 
 # Force Kill program
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
@@ -409,6 +404,11 @@ bindsym $mod+p exec --no-startup-id i3lock-fancy -p
 # Toggle visibility of status bar
 bindsym $mod+m bar mode toggle
 
+# music player control
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
 # Screenshots
 # Selection
 bindsym Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d-%s).png
@@ -417,24 +417,19 @@ bindsym $mod+Insert exec --no-startup-id ~/bin/screenshotter.sh
 # Fullscreen
 bindsym $mod+Shift+Insert --release exec --no-startup-id maim ~/Pictures/$(date +%Y-%m-%d).png
 # Selection and Edit
-bindsym $mod+Ctrl+Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d).png&& pinta ~/Pictures/$(date +%Y-%m-%d-%s).png
-
-# Screen recording
-bindsym Shift+Print exec --no-startup-id ~/bin/screencast2gif.sh
-bindsym Print exec --no-startup-id "ffcast -q $(while slop -q -n -f '-g %g ';do :;done) rec ~/Videos/rec-%si-$(date +%Y-%m-%d-%s).mp4"
-bindsym $mod+Print exec --no-startup-id pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
+bindsym $mod+Ctrl+Insert exec --no-startup-id maim -s ~/Pictures/$(date +%Y-%m-%d-%M).png&& pinta ~/Pictures/$(date +%Y-%m-%d-%M).png
 
 # End keybind configuration
 # Configure applications to start once i3 has initialized
 
 #exec --no-startup-id xfce4-panel --disable-wm-check
+#exec --no-startup-id stalonetray -c ~/.stalonetrayrc
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id stalonetray
+exec_always --no-startup-id fix_xcursor
+exec --no-startup-id nm-applet
 exec --no-startup-id clipit
 # exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id start_conky_mia
 
 # Random wallpaper
@@ -445,7 +440,7 @@ exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -p' &
 
 # Composition Manager (Transparency)
 #exec --no-startup-id xcompmgr -c -f -n
-#exec --no-startup-id compton --config ~/.config/compton.conf &
+#exec --no-startup-id compton --config ~/.config/compton/compton.conf &
 
 # Network Keyboard/Mouse/Clipboard
 #exec --no-startup-id synergy &
