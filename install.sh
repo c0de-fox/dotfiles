@@ -85,7 +85,7 @@ symlink "${DF_HOME}/.vimrc"                     "${HOME}/.vimrc"
 symlink "${DF_HOME}/.zshrc"                     "${HOME}/.zshrc"
 
 # Install ~/.config stuff
-symlink "${DF_CONFIG}/.rofi"                    "${HOME}/.config/.rofi"
+symlink "${DF_CONFIG}/rofi"                     "${HOME}/.config/rofi"
 symlink "${DF_CONFIG}/compton"                  "${HOME}/.config/compton"
 symlink "${DF_CONFIG}/dunst"                    "${HOME}/.config/dunst"
 symlink "${DF_CONFIG}/gtk-2.0"                  "${HOME}/.config/gtk-2.0"
