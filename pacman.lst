@@ -10,7 +10,6 @@ apparmor
 arandr
 arm-none-eabi-gcc
 artwork-i3
-asciidoc
 audacity
 autoconf
 autoconf-archive
@@ -27,6 +26,7 @@ binwalk
 bison
 blueman
 bluez-utils
+bmenu
 bmon
 btrfs-progs
 bzip2
@@ -43,11 +43,13 @@ cronie
 cryptsetup
 debootstrap
 deja-dup
+deluge
 device-mapper
 dfc
 dhclient
 dhcpcd
 diffutils
+discord
 dmidecode
 dmraid
 dnsmasq
@@ -101,6 +103,7 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 gstreamer
+gtk-chtheme
 gtksourceview-pkgbuild
 gufw
 gvfs
@@ -110,6 +113,7 @@ gvfs-mtp
 gvfs-smb
 gvim
 gzip
+hexchat
 htop
 hw-probe
 i3blocks
@@ -140,6 +144,7 @@ libva-vdpau-driver
 licenses
 lightdm-settings
 lightdm-slick-greeter
+linux59
 logrotate
 lvm2
 lxappearance
@@ -162,6 +167,7 @@ manjaro-ranger-settings
 manjaro-release
 manjaro-settings-manager-notifier
 manjaro-system
+manjaro-zsh-config
 mariadb
 markdown_previewer
 matcha-gtk-theme
@@ -251,6 +257,8 @@ spectre-meltdown-checker
 speedtest-cli
 sqlitebrowser
 stalonetray
+steam-manjaro
+steam-native
 strace
 subversion
 sudo
@@ -272,7 +280,6 @@ tlp
 tmux
 traceroute
 tree
-ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
 ttf-inconsolata
@@ -340,4 +347,3 @@ yubikey-manager-qt
 yubikey-personalization-gui
 yubioath-desktop
 zensu
-zsh

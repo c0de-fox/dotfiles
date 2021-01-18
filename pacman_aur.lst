@@ -12,6 +12,7 @@ gprof2dot
 i3-layout-manager-git
 i3ipc-python-git
 i3lock-fancy-git
+mhwd-nvidia-340xx
 minecraft
 ninja-bin
 ntfy
@@ -28,6 +29,9 @@ step-ca-bin
 step-cli-bin
 surf
 symlinks
+ttf-adobe-source-fonts
+ttf-font-awesome-4
+ttf-symbola
 vi-vim-symlink
 visual-studio-code-bin
 wsmancli
