@@ -25,20 +25,20 @@ export DISABLE_DOTFILES_UPDATE_PROMPT=false
 export UPDATE_DOTFILES_DAYS=13
 
 # Whether or not to automatically connect to a TMUX session when opening the shell
-export ENABLE_TMUXAC=false
+#export ENABLE_TMUXAC=false
 
 # If there is not an active tmux session, we probably want one
 # Otherwise, the shell will not open the session again (eg. opening tabs, new terminals)
-if $(tmux list-sessions >> /dev/null 2>&1); then
-    export TMUXATT=true
-else
-    export TMUXATT=false
-fi
+#if $(tmux list-sessions >> /dev/null 2>&1); then
+#    export TMUXATT=true
+#else
+#    export TMUXATT=false
+#fi
 
 # Automatically attach tmux session "C0DE"
-if [[ -z "$TMUX" && "$TMUXATT" && "$ENABLE_TMUXAC" ]]; then
-    tmux attach -t C0DE || tmux new -s C0DE
-fi
+#if [[ -z "$TMUX" && "$TMUXATT"==true && "$ENABLE_TMUXAC"==true ]]; then
+#    tmux attach -t C0DE || tmux new -s C0DE
+#fi
 
 # Enable shell-history for interactive shells
 # https://github.com/pawamoy/shell-history
