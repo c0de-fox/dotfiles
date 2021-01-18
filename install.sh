@@ -66,6 +66,7 @@ symlink "${DF_HOME}/bin" "${HOME}/bin"
 echo "Creating needed directories"
 mkdir -p "${HOME}/.tmux"
 mkdir -p "${HOME}/.vim/{autoload,bundle}"
+mkdir -p "${HOME}/dev"
 
 echo "Linking Configuration files..."
 
