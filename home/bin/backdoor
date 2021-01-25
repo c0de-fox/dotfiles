@@ -1,0 +1,15 @@
+#!/bin/bash
+# Provides access over our VPN to a shell-in-a-box instance that
+# is running on some WipeOS appliances. This backdoor exists for
+# instances that the appliance is on the VPN, but for whatever reason
+# we can't ssh in. This was brought about due to our Padnos customer.
+
+CLIENTIP="$1"
+if [[ $# -le 0 ]]; then
+   echo "please pass me the appliance's VPN address"
+   exit 1
+fi
+
+xdg-open http://localhost/shell/
+sudo ssh -L "localhost:80:${CLIENTIP}:80" production-portal
+
