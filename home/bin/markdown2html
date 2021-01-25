@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+mkdir -p html
+
+REWRITE_LINKS='
+function Link(el)
+  el.target = string.gsub(el.target, "%.md", ".html")
+  return el
+end
+'
+
+md_to_html () {
+    filename=$(basename "$1" .md);
+    output_dir=$(dirname "$1")
+    mkdir -p "${output_dir}"
+    pandoc -s \
+      -i "$1" \
+      --include-in-header=github-pandoc.css \
+      --file-scope \
+      -f markdown+emoji \
+      -t html \
+      --lua-filter=<(echo "${REWRITE_LINKS}") \
+      -o "${output_dir}/${filename}.html"
+}
+
+export -f md_to_html
+
+find . -not -path './node_modules/*' -name "*.md" | while read -r f; do
+  md_to_html "${f}"
+done
+
