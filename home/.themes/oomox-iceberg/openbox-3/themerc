@@ -6,7 +6,7 @@
 
 
 # Menu
-menu.border.color: #161821
+menu.border.color: #c6c8d1
 
 menu.title.bg: Solid Flat
 menu.title.bg.color: #161821
@@ -55,7 +55,7 @@ window.active.button.unpressed.image.color: #c6c8d1
 
 window.active.button.pressed.bg: flat solid
 window.active.button.pressed.bg.color: #84a0c6
-window.active.button.pressed.image.color: #d2d4de
+window.active.button.pressed.image.color: #161821
 
 window.active.button.disabled.bg: flat solid
 window.active.button.disabled.bg.color: #161821
@@ -66,10 +66,10 @@ window.active.button.hover.bg.color: #161821
 window.active.button.hover.image.color: #84a0c6
 
 #window.active.button.toggled.bg: #84a0c6
-#window.active.button.toggled.image.color: #d2d4de
+#window.active.button.toggled.image.color: #161821
 
 # Inactive window
-window.inactive.border.color: #161821
+window.inactive.border.color: #ada0d3
 
 window.inactive.title.bg: flat solid
 window.inactive.title.bg.color: #161821
@@ -91,7 +91,7 @@ window.inactive.button.unpressed.image.color: #9a9ca5
 
 window.inactive.button.pressed.bg: flat solid
 window.inactive.button.pressed.bg.color: #84a0c6
-window.inactive.button.pressed.image.color: #d2d4de
+window.inactive.button.pressed.image.color: #161821
 
 window.inactive.button.disabled.bg: flat solid
 window.inactive.button.disabled.bg.color: #9a9ca5
@@ -121,7 +121,7 @@ osd.border.width: 2
 osd.hilight.bg: Solid Flat
 osd.hilight.bg.color: #84a0c6
 osd.unhilight.bg: flat solid
-osd.unhilight.bg.color: #c6c8d1
+osd.unhilight.bg.color: #1e202f
 
 osd.button.unpressed.bg: flat border
 osd.button.unpressed.bg.color: #161821
@@ -129,11 +129,11 @@ osd.button.unpressed.bg.color: #161821
 
 osd.button.pressed.bg: flat border
 osd.button.pressed.bg.color: #84a0c6
-#osd.button.pressed.*.border.color: #d2d4de
+#osd.button.pressed.*.border.color: #161821
 
 osd.button.focused.bg: flat solid border
-osd.button.focused.bg.color: #161821
-#osd.button.focused.*.border.color: #c6c8d1
+osd.button.focused.bg.color: #c6c8d1
+#osd.button.focused.*.border.color: #1e202f
 
 osd.button.focused.box.color: #84a0c6
 
@@ -146,9 +146,9 @@ menu.title.text.font:shadow=n
 
 
 # Everything else
-border.width: 3
+border.width: 0
 padding.width: 8
-padding.height: 3
+padding.height: 0
 window.handle.width: 0
 window.client.padding.width: 0
 window.label.text.justify: center
