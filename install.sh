@@ -126,6 +126,12 @@ curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
 echo "Installing VIM Sensible..."
 git clone git://github.com/tpope/vim-sensible.git "${HOME}/.vim/bundle/vim-sensible"
 
+echo "Installing VIM Better Whitespace..."
+git clone https://github.com/ntpeters/vim-better-whitespace.git "${HOME}/.vim/bundle/vim-better-whitespace"
+
+echo "Installing VIM Indent Guides..."
+git clone https://github.com/thaerkh/vim-indentguides.git "${HOME}/.vim/bundle/vim-indentguides"
+
 echo "Installing VIM Iceberg theme..."
 cd /tmp
 wget https://www.vim.org/scripts/download_script.php?src_id=25718 -O iceberg.zip
