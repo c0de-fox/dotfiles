@@ -45,7 +45,8 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$_DOTFILES/omz
 
 # Theme for Oh-My-ZSH
-ZSH_THEME="darkblood"
+#ZSH_THEME="darkblood"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
