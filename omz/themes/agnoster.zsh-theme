@@ -168,7 +168,12 @@ prompt_status() {
 
 # Shows the current time
 prompt_time() {
-  prompt_segment cyan black " %*%"
+  # If the user has the emoji-clock plugin enabled, use that, otherwise use clock font icon
+  if type 'emoji-clock' > /dev/null; then
+    prompt_segment cyan black "$(emoji-clock) %*%"
+  else
+    prompt_segment cyan black " %*%"
+  fi
 }
 
 ## Main prompt
