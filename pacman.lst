@@ -224,6 +224,7 @@ playerctl
 polkit-gnome
 poppler-data
 powerline
+powerline-vim
 powertop
 procps-ng
 psmisc
