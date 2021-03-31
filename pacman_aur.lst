@@ -1,7 +1,6 @@
 aarch64-linux-musl
 anydesk-bin
 aqemu
-bumblebee-status-git
 cpuid
 distrobuilder
 fet.sh-git
@@ -30,9 +29,6 @@ step-ca-bin
 step-cli-bin
 surf
 symlinks
-ttf-adobe-source-fonts
-ttf-font-awesome-4
-ttf-symbola
 vi-vim-symlink
 visual-studio-code-bin
 wsmancli
