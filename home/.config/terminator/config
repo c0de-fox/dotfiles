@@ -4,17 +4,15 @@
   title_inactive_fg_color = "#c6c8d1"
   title_inactive_bg_color = "#6b7089"
   enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
-
+[keybindings]
 [profiles]
   [[default]]
-    palette = "#161821:#e27878:#b4be82:#e2a478:#84a0c6:#a093c7:#89b8c2:#c6c8d1:#6b7089:#e98989:#c0ca8e:#e9b189:#91acd1:#ada0d3:#95c4ce:#d2d4de"
-    foreground_color = "#c6c8d1"
+    visible_bell = True
     background_color = "#161821"
     cursor_color = "#c6c8d1"
-    #background_darkness = 0.77
-    #background_type = transparent
+    foreground_color = "#c6c8d1"
     scrollback_infinite = True
-
+    palette = "#161821:#e27878:#b4be82:#e2a478:#84a0c6:#a093c7:#89b8c2:#c6c8d1:#6b7089:#e98989:#c0ca8e:#e9b189:#91acd1:#ada0d3:#95c4ce:#d2d4de"
 [layouts]
   [[default]]
     [[[child1]]]
