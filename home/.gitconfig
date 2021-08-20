@@ -38,7 +38,7 @@
 [mergetool "fugitive"]
 	cmd = fugitive vim -f -c \"Gdiff\" \"$MERGED\"
 [user]
-	email = c0de
+	email = c0de@c0de.dev
 	name = c0de
 [include]
 	path = ~/.githubtokens
