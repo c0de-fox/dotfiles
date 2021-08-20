@@ -13,13 +13,6 @@ endif
 " Show tabs at the top of the editor
 set showtabline=2
 
-" Render newlines with '$'
-" Render Tabs with '>-'
-" Render Trailing Whitespace with '~'
-" Extends and Precedes are for Line Wrapping
-set list
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
 " Turn on Line numbering
 set number
 
@@ -52,6 +45,10 @@ let g:go_fmt_command = "goimports"
 
 " Status line types/signatures
 let g:go_auto_type_info = 1
+
+" Highlight whitespace at the end of the line
+let g:better_whitespace_enabled=1
+let g:better_whitespace_ctermcolor='red'
 
 execute pathogen#infect()
 filetype plugin indent on

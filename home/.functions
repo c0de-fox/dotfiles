@@ -78,14 +78,16 @@ ff() { #find file
 # Search for a file by its name and edit it
 # Usage: vf <filename> (optional) <max depth>
 vf() {  vim "$(ff "$@" | fzf)"; }
-# Usage: replay <number of commands> to repeat. Blank for 1
-replay() {
-    from="${1:-2}"
-    to="${2:-1}"
-    if [ "$from" -ne "$to" ]; then
-        for i in `seq "$from" -1 "$(($to + 1))"`; do
-            printf "$(fc -ln -${i} -${i}) && "
-        done
-    fi
-    $(fc -ln -${to} -${to})
+#https://unix.stackexchange.com/questions/144029/command-to-determine-ports-of-a-device-like-dev-ttyusb0
+function list_usb() {
+  for sysdevpath in $(find /sys/bus/usb/devices/usb*/ -name dev); do
+      (
+          syspath="${sysdevpath%/dev}"
+          devname="$(udevadm info -q name -p $syspath)"
+          [[ "$devname" == "bus/"* ]] && exit
+          eval "$(udevadm info -q property --export -p $syspath)"
+          [[ -z "$ID_SERIAL" ]] && exit
+          echo "$ID_SERIAL" | tr '_' ' '
+      )
+  done
 }

@@ -11,13 +11,14 @@ alias back='cd $OLDPWD'
 alias clkear='clear'
 alias ckear='clear'
 alias reload='source ~/.zshrc'
-alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
+alias webshare='python -m http.server'
 alias ipa='ip addr|grep inet'
 alias cls='clear;ls'
 alias rvi='sudo -E vim'
 alias ta='tmux attach -t C0DE || tmux new -s C0DE'
 alias open='xdg-open'
-
+alias dmesg='dmesg --color=always | grep -v UFW --color=always'
+alias sudo='sudo ' # So we can use my aliases in sudo - https://askubuntu.com/a/22043
 
 # Use `shred` if it exists, or just `rm -P`
 type "$shred" > /dev/null || alias shred='rm -P'

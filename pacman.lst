@@ -224,6 +224,7 @@ playerctl
 polkit-gnome
 poppler-data
 powerline
+powerline-vim
 powertop
 procps-ng
 psmisc
@@ -248,6 +249,7 @@ s-nail
 samba
 sbxkb
 screenfetch
+screenkey
 sed
 shadow
 simplescreenrecorder
@@ -282,6 +284,7 @@ traceroute
 tree
 ttf-dejavu
 ttf-droid
+ttf-font-awesome
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation

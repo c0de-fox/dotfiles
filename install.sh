@@ -80,6 +80,7 @@ symlink "${DF_HOME}/.environment"               "${HOME}/.environment"
 symlink "${DF_HOME}/.functions"                 "${HOME}/.functions"
 symlink "${DF_HOME}/.gitconfig"                 "${HOME}/.gitconfig"
 symlink "${DF_HOME}/.gtkrc.mine"                "${HOME}/.gtkrc.mine"
+symlink "${DF_HOME}/.gtkrc-2.0"                 "${HOME}/.gtkrc-2.0"
 symlink "${DF_HOME}/.stalonetrayrc"             "${HOME}/.stalonetrayrc"
 symlink "${DF_HOME}/.tmux.conf"                 "${HOME}/.tmux.conf"
 symlink "${DF_HOME}/.tmux/iceberg.tmux.conf"    "${HOME}/.tmux/iceberg.tmux.conf"
@@ -124,6 +125,12 @@ curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
 
 echo "Installing VIM Sensible..."
 git clone git://github.com/tpope/vim-sensible.git "${HOME}/.vim/bundle/vim-sensible"
+
+echo "Installing VIM Better Whitespace..."
+git clone https://github.com/ntpeters/vim-better-whitespace.git "${HOME}/.vim/bundle/vim-better-whitespace"
+
+echo "Installing VIM Indent Guides..."
+git clone https://github.com/thaerkh/vim-indentguides.git "${HOME}/.vim/bundle/vim-indentguides"
 
 echo "Installing VIM Iceberg theme..."
 cd /tmp
