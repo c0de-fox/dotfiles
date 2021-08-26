@@ -49,3 +49,5 @@
 	path = /usr/bin/kdiff3
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
