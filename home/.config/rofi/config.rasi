@@ -1,12 +1,4 @@
 configuration {
     theme: "iceberg-dark";
-    separator-style: "solid";
-    sidebar-mode: false;
-    lines: 5;
     font: "Source Code Pro Semibold 10.5";
-    bw: 1;
-    columns: 3;
-    padding: 5;
-    fixed-num-lines: true;
-    hide-scrollbar: true;
 }

@@ -58,6 +58,8 @@
     border-color:                @palette-bg2;
     separatorcolor:              @border-color;
     scrollbar-handle:            @palette-bg2;
+
+    text-color:                  @alternate-normal-foreground;
 }
 
 #window {
@@ -98,6 +100,8 @@
     border-color:  @palette-bg2;
     padding:       0px 0px 5px 0px;
     scrollbar:     @scrollbar;
+    columns: 3;
+    lines: 5;
 }
 
 
