@@ -12,7 +12,7 @@ fi
 #set -e
 
 # Change this url to point to your repo if you made customizations
-GIT_REPO="git://github.com/alopexc0de/dotfiles.git"
+GIT_REPO="https://c0de.dev/c0de/dotfiles.git"
 
 DOTFILES=${HOME}/dotfiles
 DF_HOME=${DOTFILES}/home
