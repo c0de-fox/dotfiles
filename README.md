@@ -16,6 +16,12 @@ It shouldn't be difficult to find an equilivant package for your distribution wi
 A list of the packages that I have installed can be found in the files `pacman.lst` and `pacman_aur.lst`.  
 Non-official packages come from the AUR, which can't typically be installed by pacman directly and the reason why it's a seperate list.
 
+Most of those packages are completely optional. The bare minimum for installing these dotfiles require you to have these programs:
+
+1. git
+1. curl
+1. unzip
+
 ### Dotfiles Postinstall
 
 You may create a standard text file called `.dotfiles.postinst` in your home directory before installing.  
