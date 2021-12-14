@@ -1,4 +1,5 @@
 configuration {
-    theme: "iceberg-dark";
     font: "Source Code Pro Semibold 10.5";
 }
+@theme "iceberg-dark"
+
