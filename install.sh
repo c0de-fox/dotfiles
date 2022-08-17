@@ -102,7 +102,7 @@ symlink "${DF_CONFIG}/mimeapps.list"            "${HOME}/.config/mimeapps.list"
 symlink "${DF_CONFIG}/Code/User/settings.json"  "${HOME}/.config/Code/User/settings.json"
 
 echo "Installing Nord rofi theme"
-wget https://raw.githubusercontent.com/undiabler/nord-rofi-theme/master/nord.rasi -O "${HOME}/.config/rofi/themes/rofi.rasi"
+wget https://raw.githubusercontent.com/undiabler/nord-rofi-theme/master/nord.rasi -O "${HOME}/.config/rofi/themes/nord.rasi"
 
 echo "Installing Iceberg Icon pack..."
 # symlink "${DF_HOME}/.themes/oomox-iceberg" "${HOME}/.themes/oomox-iceberg"
