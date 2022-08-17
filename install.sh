@@ -139,14 +139,6 @@ git clone https://github.com/ntpeters/vim-better-whitespace.git "${HOME}/.vim/bu
 echo "Installing VIM Indent Guides..."
 git clone https://github.com/thaerkh/vim-indentguides.git "${HOME}/.vim/bundle/vim-indentguides"
 
-echo "Installing VIM Iceberg theme..."
-cd /tmp
-wget https://www.vim.org/scripts/download_script.php?src_id=25718 -O iceberg.zip
-unzip iceberg.zip
-cp -r iceberg.vim/{autoload,colors} "${HOME}/.vim/"
-rm -rf /tmp/iceberg*
-cd "${HOME}"
-
 if [ -e "${POSTINSTALL_SCRIPT}" ]; then
     echo "Running post install..."
     "${POSTINSTALL_SCRIPT}"
