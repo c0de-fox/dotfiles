@@ -81,7 +81,6 @@ symlink "${DF_HOME}/.gitconfig"                 "${HOME}/.gitconfig"
 symlink "${DF_HOME}/.gtkrc.mine"                "${HOME}/.gtkrc.mine"
 symlink "${DF_HOME}/.gtkrc-2.0"                 "${HOME}/.gtkrc-2.0"
 symlink "${DF_HOME}/.tmux.conf"                 "${HOME}/.tmux.conf"
-symlink "${DF_HOME}/.tmux/iceberg.tmux.conf"    "${HOME}/.tmux/iceberg.tmux.conf"
 symlink "${DF_HOME}/.vimrc"                     "${HOME}/.vimrc"
 symlink "${DF_HOME}/.zshrc"                     "${HOME}/.zshrc"
 
@@ -127,6 +126,9 @@ CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.co
 
 echo "Installing VIM Pathogen..."
 curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
+
+echo "Installing VIM Plug"
+curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Installing VIM Sensible..."
 git clone git://github.com/tpope/vim-sensible.git "${HOME}/.vim/bundle/vim-sensible"

@@ -1,8 +1,7 @@
 " Syntax highlighting based on detected language
 syntax on
 
-" Iceberg theme - I also use this theme in VSCode
-colorscheme iceberg
+colorscheme nord
 
 " Default GUI  Window Geometry
 if has("gui_running")
@@ -49,6 +48,9 @@ let g:go_auto_type_info = 1
 " Highlight whitespace at the end of the line
 let g:better_whitespace_enabled=1
 let g:better_whitespace_ctermcolor='red'
+
+call plug#begin()
+Plug 'arcticicestudio/nord-vim'
 
 execute pathogen#infect()
 filetype plugin indent on
