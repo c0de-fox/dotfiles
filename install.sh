@@ -103,9 +103,14 @@ symlink "${DF_CONFIG}/volumeicon"               "${HOME}/.config/volumeicon"
 symlink "${DF_CONFIG}/mimeapps.list"            "${HOME}/.config/mimeapps.list"
 symlink "${DF_CONFIG}/Code/User/settings.json"  "${HOME}/.config/Code/User/settings.json"
 
-echo "Installing Iceberg GTK theme and Icon pack..."
-symlink "${DF_HOME}/.themes/oomox-iceberg" "${HOME}/.themes/oomox-iceberg"
+echo "Installing Iceberg Icon pack..."
+# symlink "${DF_HOME}/.themes/oomox-iceberg" "${HOME}/.themes/oomox-iceberg"
 symlink "${DF_HOME}/.icons/oomox-iceberg"  "${HOME}/.icons/oomox-iceberg"
+
+echo "Installing Nord GTK theme"
+mkdir -p "${HOME}/.themes/Nordic"
+wget https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic.tar.xz -O "${HOME}/.themes/Nordic.tar.xz"
+tar -xf "${HOME}/.themes/Nordic.tar.xz" -C "${HOME}/.themes/Nordic"
 
 echo "Building i3 configuration..."
 "${DF_HOME}/bin/build-i3-config"
