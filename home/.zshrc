@@ -5,9 +5,9 @@ source ~/.functions
 
 # History Settings
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd..:replay"
-export HISTSIZE=25000
+export HISTSIZE=2500000
 export HISTFILE=~/.zsh_history
-export SAVEHIST=10000
+export SAVEHIST=1000000
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
