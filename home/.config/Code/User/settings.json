@@ -8,7 +8,7 @@
     "files.autoSave": "afterDelay",
     "python.languageServer": "Pylance",
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Iceberg",
+    "workbench.colorTheme": "Nord",
     "sync.quietSync": true,
     "sync.autoUpload": true,
     "sync.autoDownload": true,
