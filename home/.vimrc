@@ -1,8 +1,6 @@
 " Syntax highlighting based on detected language
 syntax on
 
-colorscheme nord
-
 " Default GUI  Window Geometry
 if has("gui_running")
     " Preferred window size
@@ -49,8 +47,7 @@ let g:go_auto_type_info = 1
 let g:better_whitespace_enabled=1
 let g:better_whitespace_ctermcolor='red'
 
-call plug#begin()
-Plug 'arcticicestudio/nord-vim'
+colorscheme nord
 
 execute pathogen#infect()
 filetype plugin indent on

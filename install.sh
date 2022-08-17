@@ -127,8 +127,8 @@ CHSH='no' RUNZSH='no' KEEP_ZSHRC='yes' sh -c "$(curl -fsSL https://raw.github.co
 echo "Installing VIM Pathogen..."
 curl -LSs https://tpo.pe/pathogen.vim -o "${HOME}/.vim/autoload/pathogen.vim"
 
-echo "Installing VIM Plug"
-curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo "Installing VIM Nord theme"
+curl -fLo "${HOME}/.vim/colors/nord.vim" --create-dirs https://raw.githubusercontent.com/arcticicestudio/nord-vim/main/colors/nord.vim
 
 echo "Installing VIM Sensible..."
 git clone git://github.com/tpope/vim-sensible.git "${HOME}/.vim/bundle/vim-sensible"
