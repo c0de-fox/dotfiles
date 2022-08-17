@@ -1,8 +1,8 @@
 [global_config]
   title_transmit_fg_color = "#161821"
-  title_transmit_bg_color = "#89b8c2"
-  title_inactive_fg_color = "#c6c8d1"
-  title_inactive_bg_color = "#6b7089"
+  title_transmit_bg_color = "#8fbcbb"
+  title_inactive_fg_color = "#3b4252"
+  title_inactive_bg_color = "#88c0d0"
   enabled_plugins = APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
   title_use_system_font = False
   title_font = Source Code Pro 10
@@ -10,11 +10,11 @@
 [profiles]
   [[default]]
     visible_bell = True
-    background_color = "#161821"
-    cursor_color = "#c6c8d1"
-    foreground_color = "#c6c8d1"
+    background_color = "#2e3440"
+    cursor_color = "#d8dee9"
+    foreground_color = "#d8dee9"
     scrollback_infinite = True
-    palette = "#161821:#e27878:#b4be82:#e2a478:#84a0c6:#a093c7:#89b8c2:#c6c8d1:#6b7089:#e98989:#c0ca8e:#e9b189:#91acd1:#ada0d3:#95c4ce:#d2d4de"
+    palette ="#2e3440:#d8dee9:#ebcb8b:#a3be8c:#d8dee9:#e5e9f0:#eceff4:#8fbcbb:#88c0d0:#81a1c1:#5e81ac:#bf616a:#d08770:#ebcb8b:#a3be8c:#b48ead"
 [layouts]
   [[default]]
     [[[child1]]]
