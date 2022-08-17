@@ -10,7 +10,7 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR=vim
 
 # Paths
-export PATH=${HOME}/bin:$PATH:/usr/lib/wine/bin:/sbin:/usr/sbin:/usr/local/bin
+export PATH=${HOME}/bin:${HOME}/.local/bin:$PATH:/sbin:/usr/sbin:/usr/local/bin
 
 # Give the path to the dotfiles
 export _DOTFILES="${HOME}/dotfiles"
