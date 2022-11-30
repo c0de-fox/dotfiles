@@ -1,3 +1,5 @@
+# Reference: https://github.com/greshake/i3status-rust/blob/v0.22.0/doc/blocks.md
+
 [theme]
 name = "nord-dark"
 
