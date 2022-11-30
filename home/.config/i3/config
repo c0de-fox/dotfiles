@@ -201,7 +201,7 @@ bar {
     #workspace_buttons yes
     #separator_symbol "|"
 
-    font pango:FontAwesome5Free, SourceCodeProforPowerline 11
+    font pango:FontAwesome6Free 11, SourceCodeProforPowerline 11
 
     status_command i3blocks -c $i3_path/i3blocks.conf
 
