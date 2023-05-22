@@ -203,8 +203,8 @@ bar {
 
     font pango:FontAwesome6Free 11, SourceCodeProforPowerline 11
 
-    #status_command i3blocks -c $i3_path/i3blocks.conf
-    status_command i3status-rs $i3_path/i3status-rs.toml
+    status_command i3blocks -c $i3_path/i3blocks.conf
+    # status_command i3status-rs $i3_path/i3status-rs.toml
 
     colors {
         background #161821
