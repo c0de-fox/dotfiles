@@ -1,37 +1,37 @@
 # Reference: https://github.com/greshake/i3status-rust/blob/v0.22.0/doc/blocks.md
 
 [theme]
-name = "nord-dark"
+theme = "nord-dark"
 
 [icons]
-name = "awesome6"
+icons = "awesome6"
 
-[[block]]
-block = "focused_window"
-max_width = 35
-format = "{title}"
+# [[block]]
+#block = "focused_window"
+#max_width = 35
+#format = "{title}"
 
-[[block]]
-block = "cpu"
-interval = 2
-format = "{utilization}"
+#[[block]]
+#block = "cpu"
+#interval = 2
+#format = "{utilization}"
 
 #[[block]]
 #block = "load"
 #format = "{1m}"
 #interval = 15
 
-[[block]]
-block = "memory"
-format_mem = "{mem_used}"
-icons = true
-interval = 5
+#[[block]]
+#block = "memory"
+#format = "{mem_used}"
+#icons = true
+#interval = 5
 
 [[block]]
 block = "net"
 interval = 2
-hide_missing = true
-hide_inactive = true
+#hide_missing = true
+#hide_inactive = true
 
 [[block]]
 block = "temperature"
@@ -48,12 +48,12 @@ format = "{both} updates available"
 format_singular = "{both} update available"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 aur_command = "yay -Qua"
-hide_when_uptodate = true
+#hide_when_uptodate = true
 
 [[block]]
 block = "battery"
 interval = 15
-hide_missing = true
+#hide_missing = true
 format = " {percentage} ({time})"
 full_threshold = 99
 full_format = " "
@@ -67,5 +67,5 @@ headphones_indicator = true
 block = "time"
 format = "%h %d %R"
 interval = 15
-on_click = "notify-send \"$(cal)\""
+#on_click = "notify-send \"$(cal)\""
 
